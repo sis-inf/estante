@@ -235,14 +235,46 @@ contribuidor puede realizar siguiendo estos pasos en orden:
 
 ---
 
-## Configuración de Calidad de Código (Pre-commit)
+## Configuración del Entorno
 
-[#configuración-de-calidad-de-código-pre-commit](#configuración-de-calidad-de-código-pre-commit)
+[#configuración-del-entorno](#configuración-del-entorno)
+
+### JAVA_HOME
+
+[#java_home](#java_home)
+
+Asegúrate de que la variable `JAVA_HOME` esté configurada correctamente apuntando a tu instalación de JDK 17+:
+
+```
+# Linux / macOS (bash)
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+
+# Windows (PowerShell)
+$env:JAVA_HOME = "C:\Program Files\Java\jdk-17"
+```
+
+### Pre-commit
+
+[#pre-commit](#pre-commit)
 
 Para mantener la consistencia del código y la estructura del proyecto, se utilizan hooks de `pre-commit`. Antes de realizar tu primer commit, es obligatorio instalar los hooks ejecutando el siguiente comando en la raíz del proyecto:
 
 ```
 pre-commit install
+```
+
+### Verificación pre-PR
+
+[#verificación-pre-pr](#verificación-pre-pr)
+
+Antes de abrir un Pull Request, ejecuta los siguientes comandos para verificar que todo está correcto:
+
+```
+# Ejecutar las pruebas
+mvn test
+
+# Verificar el estilo del código
+mvn checkstyle:check
 ```
 
 **¡Gracias por contribuir al proyecto!**
