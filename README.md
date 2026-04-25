@@ -20,3 +20,5 @@ Ver [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Licencia
 MIT — ver [LICENSE](LICENSE)
+## ✨ Cambio final
+README actualizado correctamente.
