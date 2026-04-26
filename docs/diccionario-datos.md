@@ -1,36 +1,35 @@
-# Diccionario de Datos - Proyecto Estante
+# Diccionario de Datos Técnico - DBMS Estante
 
-Este documento describe la estructura de la base de datos relacional utilizada para la gestión de la biblioteca.
+Este documento detalla el esquema lógico y la estructura de almacenamiento del sistema **Estante**, garantizando la integridad de los datos y la optimización de las consultas.
 
-## 1. Tabla: `libros`
-Almacena la información bibliográfica de las obras disponibles.
+## 1. Tabla: `libros` (Catálogo de Entidades)
+Almacena los registros maestros de los recursos bibliográficos.
 
-| Columna | Tipo de Dato | Descripción | Restricciones |
+| Campo | Tipo de Dato | Tamaño | Descripción | Restricciones |
+|---|---|---|---|---|
+| `id_libro` | INTEGER | 4 bytes | Identificador único de registro. | PK, AUTOINCREMENT |
+| `titulo` | VARCHAR | 255 | Cadena de caracteres para el nombre del recurso. | NOT NULL |
+| `isbn` | VARCHAR | 13 | Índice único para búsqueda rápida por código. | UNIQUE, NOT NULL |
+| `ejemplares` | INT | - | Contador de instancias físicas disponibles. | DEFAULT 1 |
+
+## 2. Tabla: `socios` (Usuarios del Sistema)
+Define la estructura para el almacenamiento de metadatos de los usuarios finales.
+
+| Campo | Tipo de Dato | Tamaño | Descripción | Restricciones |
+|---|---|---|---|---|
+| `id_socio` | INTEGER | 4 bytes | Clave primaria de la entidad usuario. | PK, AUTOINCREMENT |
+| `nombre` | VARCHAR | 100 | Nombre completo registrado en el sistema. | NOT NULL |
+| `dni` | VARCHAR | 20 | Identificador único de identidad (Índice). | UNIQUE, NOT NULL |
+| `email` | VARCHAR | 150 | Punto de contacto para notificaciones del sistema. | NOT NULL |
+
+## 3. Tabla: `prestamos` (Relación de Transacciones)
+Tabla de unión que gestiona las transacciones y la integridad referencial entre libros y socios.
+
+| Campo | Tipo de Dato | Descripción | Restricciones |
 |---|---|---|---|
-| `id_libro` | INTEGER | Identificador único del libro. | PK, AUTOINCREMENT |
-| `titulo` | TEXT | Título de la obra. | NOT NULL |
-| `autor` | TEXT | Nombre del autor. | NOT NULL |
-| `isbn` | TEXT | Código ISBN único de 13 dígitos. | UNIQUE, NOT NULL |
-| `ejemplares` | INTEGER | Cantidad total de copias físicas. | DEFAULT 1 |
-
-## 2. Tabla: `socios`
-Contiene los datos de los usuarios registrados en el sistema.
-
-| Columna | Tipo de Dato | Descripción | Restricciones |
-|---|---|---|---|
-| `id_socio` | INTEGER | Identificador único del socio. | PK, AUTOINCREMENT |
-| `nombre` | TEXT | Nombre completo del usuario. | NOT NULL |
-| `dni` | TEXT | Documento nacional de identidad. | UNIQUE, NOT NULL |
-| `email` | TEXT | Correo electrónico de contacto. | NOT NULL |
-
-## 3. Tabla: `prestamos`
-Registra la relación entre libros y socios, gestionando las fechas de entrega.
-
-| Columna | Tipo de Dato | Descripción | Restricciones |
-|---|---|---|---|
-| `id_prestamo` | INTEGER | Identificador de la transacción. | PK, AUTOINCREMENT |
-| `id_libro` | INTEGER | Referencia al libro prestado. | FK (libros.id_libro) |
-| `id_socio` | INTEGER | Referencia al socio solicitante. | FK (socios.id_socio) |
-| `fecha_salida` | DATE | Fecha en que se entregó el libro. | NOT NULL |
-| `fecha_devolucion` | DATE | Fecha máxima de retorno. | NOT NULL |
-| `estado` | TEXT | Estado del préstamo (Activo/Devuelto). | DEFAULT 'Activo' |
+| `id_prestamo` | INTEGER | Clave primaria de la transacción. | PK, AUTOINCREMENT |
+| `id_libro` | INTEGER | Puntero externo a la tabla `libros`. | FK (libros.id_libro) |
+| `id_socio` | INTEGER | Puntero externo a la tabla `socios`. | FK (socios.id_socio) |
+| `fecha_salida` | DATE | Marca de tiempo de inicio de la transacción. | NOT NULL |
+| `fecha_devolucion` | DATE | Límite temporal de la persistencia del préstamo. | NOT NULL |
+| `estado` | CHAR(1) | Estado lógico del registro (A: Activo, C: Cerrado). | DEFAULT 'A' |
