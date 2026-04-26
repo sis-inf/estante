@@ -17,4 +17,4 @@ Esta clase permitirá centralizar la lógica de conexión a la base de datos, fa
 
 ## Ejemplo de uso propuesto
 
-Se podría crear una instancia de la clase con los datos de conexión y utilizar un método para obtener la conexión a la base de datos.
+Se podría crear una instancia de la clase con los datos de conexión y utilizar un método para obtener la conexión a la base de datos...
