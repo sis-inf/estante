@@ -8,53 +8,86 @@ el **Forking Workflow**. Lee este documento antes de empezar.
 ## Flujo de trabajo
 
 ### 1. Haz fork del repositorio
+
 Botón **Fork** en la esquina superior derecha de GitHub.
 
 ### 2. Clona tu fork
+
 ```bash
 git clone https://github.com/TU-USUARIO/PROYECTO.git
+
 cd PROYECTO
 ```
 
 ### 3. Agrega el repo original como upstream
+
 ```bash
-git remote add upstream https://github.com/sis-inf/PROYECTO.git
+git remote add upstream https://github.com/sis-inf/estante.git
 ```
 
 ### 4. Sincroniza antes de trabajar
+
 ```bash
 git checkout dev
+
 git pull upstream dev
 ```
 
 ### 5. Crea tu rama de trabajo
+
 ```bash
-git checkout -b tipo/descripcion-corta
+git checkout -b tipo/[`descripcion-corta`]
 ```
+#### Convencion de nombres de ramas
 
-Ejemplos de nombres de rama:
+tipo/[`descripcion corta`]
 
-feat/endpoint-metricas-cpu
-docs/readme-instalacion
-fix/calculo-ram-incorrecto
-test/pruebas-unitarias-cpu
-chore/configurar-github-actions
-security/analisis-dependencias
+**Tipos de ramas:**
+
+- `feat/` → nueva funcionalidad
+- `fix/` → corrección de errores
+- `docs/` → documentación
+- `test/` → pruebas
+- `chore/` → tareas generales o configuración
+- `refactor/` → mejoras internas
+- `security/` → mejoras de seguridad
+- `data/` → análisis de datos
+
+**Ejemplos de ramas:**
+- feat/endpoint-metricas-cpu
+- docs/readme-instalacion
+- fix/calculo-ram-incorrecto
+- test/pruebas-unitarias-cpu
+- chore/configurar-github-actions
+- security/analisis-dependencias
 
 ### 6. Trabaja y haz commits pequeños
+
 ```bash
 git add .
-git commit -m "tipo: descripción corta en presente"
+
+git commit -m "tipo: descripción corta en presente - Closes #N"
 ```
+> [!NOTE]
+> Siempre referencia el issue correspondiente en el commit: Closes #N
 
 ### 7. Sube tu rama a tu fork
+
 ```bash
 git push origin tipo/descripcion-corta
 ```
 
 ### 8. Abre un Pull Request
-- Base: `sis-inf/PROYECTO` → rama `dev`
+
+- Base: `sis-inf/estante` → rama `dev`
 - Compare: `TU-USUARIO/PROYECTO` → tu rama
+
+#### Recomendaciones para el PR
+
+- Explica claramente los cambios realizados
+- Referencia el issue correspondiente (`Closes #N`)
+- Mantén el PR enfocado en un solo objetivo
+- Añade evidencia (logs, capturas, etc.) si aplica
 
 ---
 
@@ -109,6 +142,10 @@ chore: configurar GitHub Actions para CI
 ## ¿No sabes por dónde empezar?
 
 1. Revisa los issues abiertos con la etiqueta `good first issue`
-2. Comenta en el issue que quieres trabajarlo
+2. Comenta en el issue que quieres trabajar
 3. Espera confirmación antes de empezar
 4. Sigue los pasos de este documento
+
+---
+
+**¡Gracias por contribuir al proyecto!**
