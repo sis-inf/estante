@@ -1,3 +1,5 @@
+package edu.sisinf.estante;
+
 public class SqlValidator {
 
     public static boolean isSelect(String query) {
