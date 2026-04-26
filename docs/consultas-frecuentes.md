@@ -1,33 +1,33 @@
-# Consultas Frecuentes - Proyecto Estante
+# Guía de Operaciones y Consultas del DBMS - Estante
 
-Este documento sirve como guía de referencia para las operaciones más comunes dentro del gestor de biblioteca.
+Este documento detalla las operaciones fundamentales de manipulación de datos (DML) que el administrador puede ejecutar sobre el motor de base de datos de **Estante**.
 
-## 1. Crear un nuevo registro (Crear)
-**Descripción:** Registrar un nuevo libro en el catálogo.
-- **Entrada esperada:** Título: "Cien años de soledad", Autor: "Gabriel García Márquez", ISBN: "9780307474728".
-- **Resultado esperado:** Mensaje de confirmación: "Libro registrado exitosamente con ID 105".
+## 1. Inserción de Registros (Crear)
+**Descripción:** Operación para persistir un nuevo registro en la tabla de datos bibliográficos.
+- **Entrada esperada:** Atributos del objeto (Título, Autor, ISBN único).
+- **Resultado esperado:** Asignación de un ID autoincremental y confirmación de escritura en el archivo de base de datos.
 
-## 2. Listar todos los libros (Listar)
-**Descripción:** Mostrar la lista completa de libros almacenados.
-- **Entrada esperada:** Comando de "Mostrar Todo".
-- **Resultado esperado:** Una tabla con ID, Título, Autor y Estado de todos los libros en la base de datos.
+## 2. Recuperación de Información por ID (Leer)
+**Descripción:** Acceso directo a un registro específico mediante su clave primaria.
+- **Entrada esperada:** Identificador numérico (PK).
+- **Resultado esperado:** Retorno de todos los campos asociados al puntero del registro solicitado.
 
-## 3. Buscar un libro por título (Buscar)
-**Descripción:** Localizar un libro específico mediante una palabra clave.
-- **Entrada esperada:** Palabra clave: "Quijote".
-- **Resultado esperado:** Detalle del libro "Don Quijote de la Mancha" (Autor, ISBN, disponibilidad).
+## 3. Actualización de Atributos (Actualizar)
+**Descripción:** Modificación de valores en campos específicos de un registro existente, manteniendo la integridad.
+- **Entrada esperada:** ID del registro y el nuevo valor para el campo (ej: `stock` o `email`).
+- **Resultado esperado:** Actualización de los datos en disco y mensaje de "Registro actualizado con éxito".
 
-## 4. Consultar historial de un socio (Leer)
-**Descripción:** Ver qué libros ha solicitado un socio específico.
-- **Entrada esperada:** DNI del socio: "12345678".
-- **Resultado esperado:** Lista de préstamos activos e históricos asociados a ese DNI.
+## 4. Eliminación de Registros (Eliminar)
+**Descripción:** Remoción de una entrada de la base de datos, verificando que no existan restricciones de integridad referencial.
+- **Entrada esperada:** ID del registro a eliminar.
+- **Resultado esperado:** Eliminación física del registro y actualización de los índices del sistema.
 
-## 5. Actualizar información de un socio (Actualizar)
-**Descripción:** Cambiar el correo electrónico o teléfono de un usuario.
-- **Entrada esperada:** ID de socio: 42, Nuevo Email: "rodrigo.nuevo@email.com".
-- **Resultado esperado:** Notificación de "Datos actualizados correctamente" y persistencia en la tabla `socios`.
+## 5. Búsqueda por Índices Secundarios (Buscar)
+**Descripción:** Consulta filtrada utilizando campos indexados para optimizar el tiempo de respuesta.
+- **Entrada esperada:** Cadena de búsqueda (ej: ISBN o DNI).
+- **Resultado esperado:** Conjunto de resultados que coinciden exactamente con el criterio de búsqueda indexado.
 
-## 6. Dar de baja un ejemplar (Eliminar)
-**Descripción:** Eliminar un libro del sistema por pérdida o retiro.
-- **Entrada esperada:** ID del libro: 88.
-- **Resultado esperado:** Eliminación física o lógica del registro, confirmando que ya no aparece en las búsquedas.
+## 6. Listado General de Tablas (Listar)
+**Descripción:** Operación de escaneo completo para visualizar todos los registros almacenados en una entidad.
+- **Entrada esperada:** Comando de selección de tabla (ej: `Listar Libros`).
+- **Resultado esperado:** Volcado de datos de todos los registros activos en la tabla seleccionada.
