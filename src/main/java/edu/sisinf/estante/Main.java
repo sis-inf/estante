@@ -1,3 +1,5 @@
+package edu.sisinf.estante;
+
 public class Main {
     public static void main(String[] args) {
         // Pruebas de validación SQL

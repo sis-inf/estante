@@ -1,4 +1,4 @@
-package com.sisinf.estante.config;
+package edu.sisinf.estante.config;
 
 /**
  * Configuración de conexión a base de datos.
