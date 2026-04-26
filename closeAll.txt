@@ -1,0 +1,9 @@
+Propuesta del método closeAll:
+
+- Permite cerrar múltiples recursos (Connection, Statement, ResultSet)
+- Itera sobre cada recurso recibido
+- Usa try-catch para evitar errores
+- Muestra un warning si ocurre un fallo
+- Se utilizará en bloques finally
+
+Pendiente implementación en código cuando la estructura del proyecto esté definida.
