@@ -1,17 +1,14 @@
 # Diccionario de Datos - DBMS Estante
 
-Este documento detalla la estructura lógica del sistema, definiendo los tipos de datos y restricciones de integridad del motor de base de datos.
-
-## Tabla: LIBROS (Entidad de Almacenamiento)
+## Tabla: LIBROS
 | Campo | Tipo | Descripción | Restricciones |
 |---|---|---|---|
-| `id_libro` | INT | Identificador único del registro. | PK, NOT NULL, AUTOINCREMENT |
-| `isbn` | VARCHAR(13) | Código internacional único. | UNIQUE, NOT NULL |
-| `titulo` | VARCHAR(200) | Título almacenado en el buffer. | NOT NULL |
+| `id_libro` | INT | Identificador único. | PK, AUTOINCREMENT |
+| `isbn` | VARCHAR(13) | Código único. | UNIQUE, NOT NULL |
+| `titulo` | VARCHAR(200) | Título del libro. | NOT NULL |
 
-## Tabla: PRESTAMOS (Entidad Transaccional)
+## Tabla: PRESTAMOS
 | Campo | Tipo | Descripción | Restricciones |
 |---|---|---|---|
-| `id_prestamo` | INT | ID de la transacción. | PK, NOT NULL |
-| `id_libro` | INT | Puntero a la tabla LIBROS. | FK, NOT NULL |
-| `fecha_inicio` | DATE | Registro de tiempo de la operación. | NOT NULL |
+| `id_prestamo` | INT | ID Transacción. | PK |
+| `id_libro` | INT | Puntero a LIBROS. | FK |
