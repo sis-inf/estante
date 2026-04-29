@@ -1,24 +1,42 @@
-# Documentación de API
+# API - Proyecto Estante
 
-## Base URL
+## Descripción
+Este documento describe las clases principales del proyecto y sus métodos.
 
-http://localhost:PUERTO
+## Clase: ConnectionProvider
+Encargada de establecer la conexión con la base de datos PostgreSQL.
 
-## Endpoints
+### Métodos:
 
-### GET /
-**Descripción:**
-**Parámetros:**
-**Respuesta:**
-```json
-{
-}
-```
+- *ConnectionProvider()*
+Constructor de la clase.
 
-## Códigos de error
+- *connect()*
+Establece la conexión con la base de datos.
 
-| Código | Descripción |
-|---|---|
-| 200 | OK |
-| 400 | Bad Request |
-| 500 | Internal Server Error |
+- *executeQuery(String query)*
+Ejecuta consultas SQL.
+
+- *closeConnection()*
+Cierra la conexión con la base de datos.
+
+---
+
+## Clase: EstanteService
+Encargada de la lógica del sistema.
+
+### Métodos:
+
+- *getAll()*
+Obtiene todos los registros.
+
+- *save()*
+Guarda un nuevo registro.
+
+- *delete()*
+Elimina un registro.
+
+---
+
+## Notas
+Las clases pueden variar según la implementación final del proyecto.
