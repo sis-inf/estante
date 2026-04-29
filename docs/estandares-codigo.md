@@ -8,7 +8,7 @@ Esta guía define convenciones para escribir código Java limpio, consistente y 
 - Usar `PascalCase` (UpperCamelCase).
 - Los nombres deben ser sustantivos.
 - Evitar abreviaciones innecesarias.
-- Cada archivo debe contener una sola clase pública.
+- Cada archivo debe contener una sola clase pública. 
 
 ### ✅ Ejemplos:
 
@@ -161,9 +161,13 @@ public class UserService {
 - 100 caracteres → límite por línea
 - Javadoc → documentación
 - Consistencia > preferencias personales
-- Código → Español
+- Código → Inglés
 
 > [!NOTE]
 > - Los ejemplos presentados son ilustrativos.
 > - No es necesario que el código sea exactamente igual,
 > - pero sí respetar las buenas prácticas descritas.
+
+## 🌐 Idioma utilizado
+
+Se eligió el idioma inglés porque es el estándar en el desarrollo de software y permite mayor consistencia en nombres de clases, métodos y variables.
