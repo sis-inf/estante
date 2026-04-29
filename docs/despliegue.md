@@ -1,23 +1,18 @@
-# Guía de Despliegue
+# Despliegue del Proyecto Estante
 
-## Prerrequisitos
+## Requisitos
 
-## Entornos
+Para ejecutar el proyecto necesitas:
 
-### Local
+- Java JDK
+- Maven
+- PostgreSQL
+- Git
+
+---
+
+## Clonar el repositorio
+
 ```bash
-# Pasos para correr localmente
-```
-
-### Producción
-```bash
-# Pasos para despliegue en producción
-```
-
-## Variables de entorno
-
-| Variable | Descripción | Ejemplo |
-|---|---|---|
-| | | |
-
-## Solución de problemas comunes
+git clone https://github.com/TU-USUARIO/estante.git
+cd estante
