@@ -1,16 +1,21 @@
-# Glosario
+# Glosario del Proyecto Estante
+
+## Términos
 
 | Término | Definición |
 |---|---|
-| **Back-end** | Capa del software que gestiona la lógica de la biblioteca y la conexión con la base de datos. |
-| **Front-end** | Interfaz gráfica donde el usuario interactúa para buscar libros o registrar préstamos. |
-| **ISBN** | Número estándar internacional de 13 dígitos que identifica de forma única cada libro. |
-| **Ejemplar** | Copia física individual de un libro; un mismo título puede tener múltiples ejemplares. |
-| **Préstamo** | Acción de asignar un libro a un usuario por un periodo de tiempo determinado. |
-| **Disponibilidad** | Atributo que indica si un libro está libre en estante o si está actualmente prestado. |
-| **Socio / Usuario** | Persona registrada en el sistema con credenciales para solicitar libros. |
-| **Mora / Multa** | Sanción o estado de penalización para usuarios que no devuelven libros a tiempo. |
-| **CRUD** | Siglas de Crear, Leer, Actualizar y Borrar, las funciones básicas para gestionar los libros. |
-| **Pull Request (PR)** | Propuesta de cambio de código que debe enviarse a la rama `dev` para revisión. |
-| **Merge** | Proceso de fusionar los cambios de una rama de corrección hacia la rama de desarrollo. |
-| **Reserva** | Acción de apartar un libro que está prestado para que sea asignado al siguiente interesado. |
+| Base de datos | Conjunto organizado de información almacenada para su consulta y gestión. |
+| Clave foránea | Campo que crea una relación entre dos tablas. |
+| Clave primaria | Identificador único de cada registro en una tabla. |
+| Conexión | Enlace entre la aplicación Java y PostgreSQL mediante JDBC. |
+| Consulta SQL | Instrucción utilizada para interactuar con la base de datos. |
+| DDL | Lenguaje para definir estructuras como tablas y esquemas. |
+| DML | Lenguaje para manipular datos (insertar, actualizar, eliminar). |
+| Driver | Componente que permite la comunicación entre Java y la base de datos. |
+| Esquema | Organización lógica de tablas dentro de la base de datos. |
+| JDBC | API de Java que permite conectarse a bases de datos. |
+| ORM | Técnica que mapea objetos de Java a tablas de base de datos. |
+| PreparedStatement | Objeto de JDBC que permite ejecutar consultas con parámetros. |
+| Registro | Fila dentro de una tabla de base de datos. |
+| ResultSet | Objeto que contiene los resultados de una consulta SQL. |
+| Tabla | Estructura que almacena datos en filas y columnas. |
