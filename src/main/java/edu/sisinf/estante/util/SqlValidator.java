@@ -1,4 +1,4 @@
-package edu.sisinf.estante;
+package edu.sisinf.estante.util;
 
 public class SqlValidator {
 
