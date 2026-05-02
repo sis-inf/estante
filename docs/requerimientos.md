@@ -28,6 +28,7 @@
 | RNF-006 | La aplicacion debe cargar su interfaz principal en un tiempo maximo de 3 segundos | Rendimiento | Pendiente |
 | RNF-007 | El sistema debe de contar con un historial de consultas de facil acceso para el usuario | Usabilidad | Pendiente |
 | RNF-008 | La interfaz debe mantener un diseño consistente en todas sus ventana y dialogos | Usabilidad | Pendiente |
+| RNF-009 | El sistema debe permitir ejecutar consultas concurrentes sin que el tiempo de respuesta supere los 3 segundos por consulta | Rendimiento | Pendiente |
 
 ## Requerimientos de Sistema
 
