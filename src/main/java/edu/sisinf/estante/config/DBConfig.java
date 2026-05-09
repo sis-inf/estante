@@ -2,47 +2,62 @@ package edu.sisinf.estante.config;
 
 /**
  * Configuración de conexión a base de datos.
- *
- * @param host Dirección del servidor
- * @param puerto Puerto de conexión
- * @param nombre Nombre de la base de datos
- * @param usuario Usuario de acceso
- * @param password Contraseña
+ * Contiene los datos necesarios para establecer una conexión JDBC.
  */
-/**
- * Configuración inmutable para la conexión a base de datos.
- */
-public record DBConfig(
-        String host,
-        int puerto,
-        String nombre,
-        String usuario,
-        String password
-) {
+public class DBConfig {
 
-    public DBConfig {
-        if (host == null || host.isBlank())
-            throw new IllegalArgumentException("host no puede estar vacío");
-
-        if (puerto <= 0)
-            throw new IllegalArgumentException("puerto inválido");
-
-        if (nombre == null || nombre.isBlank())
-            throw new IllegalArgumentException("nombre no puede estar vacío");
-
-        if (usuario == null || usuario.isBlank())
-            throw new IllegalArgumentException("usuario no puede estar vacío");
-
-        if (password == null)
-            throw new IllegalArgumentException("password no puede ser nulo");
-    }
+    private String url;
+    private String usuario;
+    private String password;
+    private String driver;
 
     /**
-     * Genera la URL JDBC para MySQL.
+     * Constructor con todos los campos.
      *
-     * @return URL JDBC
+     * @param url      URL JDBC de conexión
+     * @param usuario  Usuario de la base de datos
+     * @param password Contraseña del usuario
+     * @param driver   Clase del driver JDBC
      */
-    public String toJdbcUrl() {
-        return "jdbc:mysql://" + host + ":" + puerto + "/" + nombre;
+    public DBConfig(String url, String usuario, String password, String driver) {
+        this.url = url;
+        this.usuario = usuario;
+        this.password = password;
+        this.driver = driver;
+    }
+
+    /** Constructor vacío para uso con setters. */
+    public DBConfig() {}
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getDriver() {
+        return driver;
+    }
+
+    public void setDriver(String driver) {
+        this.driver = driver;
     }
 }
