@@ -17,6 +17,7 @@ public class ResultadoQuery {
     private int filasAfectadas;
     private long tiempoMs;
     private String mensaje;
+    private int totalFilas;
 
     private ResultadoQuery() {
         this.columnas = new ArrayList<>();
@@ -66,6 +67,18 @@ public class ResultadoQuery {
         return resultado;
     }
 
+    //Lanza IllegalArgumentException si el tamaño no coincide con columnas
+    public void agregarFila(List<Object> fila) {
+        if (fila == null || fila.size() != columnas.size()) {
+            throw new IllegalArgumentException(
+                "El tamaño de la fila (" + (fila == null ? "null" : fila.size()) +
+                ") no coincide con el número de columnas (" + columnas.size() + ")."
+            );
+        }
+        filas.add(new ArrayList<>(fila));
+        totalFilas++;
+    }
+    
     public Tipo getTipo() {
         return tipo;
     }
@@ -80,6 +93,10 @@ public class ResultadoQuery {
 
     public int getFilasAfectadas() {
         return filasAfectadas;
+    }
+
+    public int getTotalFilas() {
+        return totalFilas;
     }
 
     public long getTiempoMs() {
