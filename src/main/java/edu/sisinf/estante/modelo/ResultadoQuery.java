@@ -24,6 +24,13 @@ public class ResultadoQuery {
         this.filasAfectadas = 0;
     }
 
+    // Constructor que recibe columnas para consultas SELECT
+    public ResultadoQuery(List<String> columnas) {
+        this();
+        this.tipo = Tipo.LECTURA;
+        this.columnas = new ArrayList<>(columnas);
+    }
+
     public static ResultadoQuery deLectura(
             List<String> columnas,
             List<List<Object>> filas,
