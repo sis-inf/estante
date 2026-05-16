@@ -1,13 +1,11 @@
-package edu.sisinf.estante;
 import edu.sisinf.estante.util.SqlValidator;
 
 public class Main {
     public static void main(String[] args) {
-        // Pruebas de validación SQL
-        System.out.println(SqlValidator.isSelect("select * from users"));
-        System.out.println(SqlValidator.isInsert(" insert into users"));
-        System.out.println(SqlValidator.isUpdate("update users set name='a'"));
-        System.out.println(SqlValidator.isDelete("delete from users"));
-        System.out.println(SqlValidator.isSelect("drop table users"));
+        System.out.println(SqlValidator.tipo("select * from t"));
+        System.out.println(SqlValidator.tipo("CREATE TABLE x (id INT)"));
+        System.out.println(SqlValidator.esDestructiva("DELETE FROM users"));
+        System.out.println(SqlValidator.esDestructiva("UPDATE users SET nombre='a'"));
+        System.out.println(SqlValidator.esDestructiva("UPDATE users SET nombre='a' WHERE id=1"));
     }
 }

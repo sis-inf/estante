@@ -161,9 +161,13 @@ public class UserService {
 - 100 caracteres → límite por línea
 - Javadoc → documentación
 - Consistencia > preferencias personales
-- Código → Español
+- Código → Inglés
 
 > [!NOTE]
 > - Los ejemplos presentados son ilustrativos.
 > - No es necesario que el código sea exactamente igual,
 > - pero sí respetar las buenas prácticas descritas.
+
+## ✅ Conclusión
+
+El proyecto utilizará nombres en inglés para clases, métodos, variables y funciones con el objetivo de mantener consistencia con las buenas prácticas de desarrollo en Java y facilitar la comprensión del código.
