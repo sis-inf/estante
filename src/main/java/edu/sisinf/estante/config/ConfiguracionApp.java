@@ -67,3 +67,4 @@ public class ConfiguracionApp {
         directorioHome().toFile().mkdirs();
     }
 }
+// VERIFICADO: Ubicación y package correctos - Issue #242 - mar 26 may 2026 02:42:20 -04
