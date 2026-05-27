@@ -1,7 +1,7 @@
 package edu.sisinf.estante.controller;
 
-import edu.sisinf.estante.SqlValidator;
-import edu.sisinf.estante.TipoQuery;
+import edu.sisinf.estante.util.SqlValidator;
+import edu.sisinf.estante.util.SqlValidator.TipoQuery;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
