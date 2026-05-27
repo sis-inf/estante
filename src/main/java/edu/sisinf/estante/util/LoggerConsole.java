@@ -12,7 +12,8 @@ public class LoggerConsole {
     private static LoggerConsole instancia;
     private static final DateTimeFormatter FORMATO = DateTimeFormatter.ofPattern("HH:mm:ss");
 
-    private LoggerConsole() {}
+    private LoggerConsole() {
+    }
 
     public static LoggerConsole getInstancia() {
         if (instancia == null) {
