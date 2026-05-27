@@ -31,9 +31,11 @@ target/
 *.dll
 *.so
 
+
 # IDEs / Editores
 .vscode/
 .idea/
+*.iml
 *.swp
 *.swo
 
@@ -59,6 +61,7 @@ htmlcov/
 *.dumps
 
 # Java
+*.class
 .classpath
 .project
 .settings/
@@ -90,5 +93,3 @@ id_rsa.pub
 .eslintcache
 .gitignore.local
 
-*.iml
-*.class
