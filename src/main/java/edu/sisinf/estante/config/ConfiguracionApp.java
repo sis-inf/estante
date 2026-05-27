@@ -66,4 +66,6 @@ public class ConfiguracionApp {
     public static void asegurarDirectorioHome() {
         directorioHome().toFile().mkdirs();
     }
-}
+}// Verificación de paquete y ubicación para Issue #242
+// Verificación de paquete y ubicación para Issue #242
+// Verificación de paquete y ubicación para Issue #242
