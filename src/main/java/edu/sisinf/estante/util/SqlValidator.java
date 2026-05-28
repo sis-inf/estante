@@ -44,6 +44,11 @@ public class SqlValidator {
                 || tipo == TipoQuery.DELETE;
     }
 
+    // Este solo existe para que el test/issue #240 no falle
+    public static boolean isDML(String query) {
+    return esDML(query); 
+    }
+
     public static boolean esDDL(String query) {
         TipoQuery tipo = tipo(query);
         return tipo == TipoQuery.CREATE
