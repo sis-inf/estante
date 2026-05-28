@@ -1,7 +1,7 @@
 package edu.sisinf.estante.dao;
 
-import edu.sisinf.estante.core.Conexion;
-import edu.sisinf.estante.core.TipoMotor;
+import edu.sisinf.estante.modelo.Conexion;
+import edu.sisinf.estante.modelo.TipoMotor;
 import edu.sisinf.estante.core.ErrorConexion;
 
 import java.sql.Connection;

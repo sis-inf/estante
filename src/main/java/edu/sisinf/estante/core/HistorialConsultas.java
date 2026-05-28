@@ -1,4 +1,3 @@
-```java id="l8fq6h"
 package edu.sisinf.estante.core;
 
 import java.util.Collections;
@@ -46,4 +45,4 @@ public class HistorialConsultas {
                 .collect(Collectors.toList());
     }
 }
-```
+

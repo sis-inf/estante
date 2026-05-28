@@ -1,16 +1,18 @@
 package edu.sisinf.estante.core;
 
 import edu.sisinf.estante.config.DBConfig;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import edu.sisinf.estante.dto.QueryResult;
 import edu.sisinf.estante.util.SqlValidator;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.Statement;
 
 /**
  * Proveedor de conexiones JDBC.
@@ -29,8 +31,12 @@ public class ConnectionProvider {
         try {
             Class.forName(config.getDriver());
         } catch (ClassNotFoundException e) {
-            throw new SQLException("Driver no encontrado: " + config.getDriver(), e);
+            throw new SQLException(
+                    "Driver no encontrado: " + config.getDriver(),
+                    e
+            );
         }
+
         return DriverManager.getConnection(
                 config.getUrl(),
                 config.getUsuario(),
@@ -40,9 +46,6 @@ public class ConnectionProvider {
 
     /**
      * Ejecuta una sentencia SELECT y retorna el resultado encapsulado en un {@link QueryResult}.
-     *
-     * <p>Los recursos ({@link Statement} y {@link ResultSet}) se cierran en el bloque
-     * {@code finally} para garantizar su liberación incluso si ocurre un error.</p>
      *
      * @param connection conexión JDBC activa sobre la que se ejecuta la consulta
      * @param sql        sentencia SQL de lectura (debe ser SELECT)
@@ -99,9 +102,6 @@ public class ConnectionProvider {
     /**
      * Ejecuta una sentencia de escritura (INSERT, UPDATE, DELETE) y retorna
      * el número de filas afectadas.
-     *
-     * <p>Este método rechaza explícitamente sentencias SELECT, ya que está
-     * diseñado exclusivamente para operaciones de modificación de datos.</p>
      *
      * @param connection conexión JDBC activa sobre la que se ejecuta la sentencia
      * @param sql        sentencia SQL de escritura (INSERT, UPDATE o DELETE)
