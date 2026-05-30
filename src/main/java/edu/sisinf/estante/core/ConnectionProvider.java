@@ -107,6 +107,7 @@ public class ConnectionProvider {
      * @return número de filas afectadas por la sentencia
      * @throws IllegalArgumentException si la sentencia es un SELECT
      * @throws ErrorQuery               si ocurre un error durante la ejecución SQL
+     * esta todo bien
      */
     public static int executeUpdate(Connection connection, String sql) throws IllegalArgumentException, ErrorQuery {
         if (SqlValidator.esLectura(sql)) {
