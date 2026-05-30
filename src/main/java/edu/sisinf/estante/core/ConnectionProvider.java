@@ -110,16 +110,19 @@ public class ConnectionProvider {
      * @throws ErrorQuery               si ocurre un error durante la ejecución SQL
      */
     public static int executeUpdate(Connection connection, String sql) throws IllegalArgumentException, ErrorQuery {
-        if (SqlValidator.esLectura(sql)) {
-            throw new IllegalArgumentException(
-                    "executeUpdate() no acepta sentencias SELECT. Use executeQuery() para lecturas."
-            );
-        }
 
-        try (Statement statement = connection.createStatement()) {
-            return statement.executeUpdate(sql);
-        } catch (SQLException e) {
-            throw new ErrorQuery("Error al ejecutar la sentencia de escritura: " + e.getMessage(), e);
-        }
+    if (sql == null || sql.trim().toUpperCase().startsWith("SELECT")) {
+        throw new IllegalArgumentException(
+                "executeUpdate() no permite sentencias SELECT. Use executeSelect() para consultas."
+        );
     }
+
+    try (Statement statement = connection.createStatement()) {
+        return statement.executeUpdate(sql);
+    } catch (SQLException e) {
+        throw new ErrorQuery("Error al ejecutar la sentencia de escritura: " + e.getMessage(), e);
+    }
+  }
 }
+
+    
