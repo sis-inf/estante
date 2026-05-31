@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="edu.sisinf.estante.controller.PanelEditorSQLController"
+      VBox.vgrow="ALWAYS">
+
+    <ToolBar>
+        <Button fx:id="btnEjecutar" text="Ejecutar (Ctrl+Enter)"/>
+        <Button fx:id="btnLimpiar" text="Limpiar"/>
+        <Separator orientation="VERTICAL"/>
+        <Label fx:id="labelConexionActiva" text="Sin conexión"/>
+    </ToolBar>
+
+    <TextArea fx:id="areaSQL"
+              promptText="Escribe tu consulta SQL aquí..."
+              wrapText="false"
+              style="-fx-font-family: monospace;"
+              VBox.vgrow="ALWAYS"/>
+
+</VBox>

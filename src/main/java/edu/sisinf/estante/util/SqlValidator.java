@@ -4,6 +4,7 @@ import java.util.Locale;
 
 public class SqlValidator {
 
+
     public enum TipoQuery {
         SELECT,
         INSERT,
@@ -41,6 +42,11 @@ public class SqlValidator {
         return tipo == TipoQuery.INSERT
                 || tipo == TipoQuery.UPDATE
                 || tipo == TipoQuery.DELETE;
+    }
+
+    // Este solo existe para que el test/issue #240 no falle
+    public static boolean isDML(String query) {
+    return esDML(query); 
     }
 
     public static boolean esDDL(String query) {
@@ -91,4 +97,29 @@ public class SqlValidator {
     private static boolean contieneWhere(String query) {
         return normalizar(query).matches("(?s).*\\bWHERE\\b.*");
     }
+    public static boolean esSentenciaValida(String query) {
+    if (query == null) {
+        return false;
+    }
+
+    return !normalizar(query).isEmpty();
+    }
+    // ==================== METODOS INDIVIDUALES REQUERIDOS ====================
+    
+    public static boolean isSelect(String query) {
+        return esLectura(query);
+    }
+
+    public static boolean isInsert(String query) {
+        return tipo(query) == TipoQuery.INSERT;
+    }
+
+    public static boolean isUpdate(String query) {
+        return tipo(query) == TipoQuery.UPDATE;
+    }
+
+    public static boolean isDelete(String query) {
+        return tipo(query) == TipoQuery.DELETE;
+    }
 }
+

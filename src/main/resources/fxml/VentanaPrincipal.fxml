@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="edu.sisinf.estante.controller.VentanaPrincipalController"
+            prefWidth="1100.0"
+            prefHeight="700.0">
+
+    <top>
+        <MenuBar>
+            <menus>
+                <Menu text="Archivo">
+                    <items>
+                        <MenuItem fx:id="menuNuevaConexion" text="Nueva conexión..." />
+                        <MenuItem fx:id="menuSalir" text="Salir" />
+                    </items>
+                </Menu>
+
+                <Menu text="Ayuda">
+                    <items>
+                        <MenuItem fx:id="menuAcercaDe" text="Acerca de..." />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+
+    <center>
+        <SplitPane dividerPositions="0.25">
+
+            <StackPane fx:id="contenedorArbol" />
+
+            <SplitPane orientation="VERTICAL" dividerPositions="0.6">
+
+                <StackPane fx:id="contenedorEditor" />
+
+                <StackPane fx:id="contenedorResultado" />
+
+            </SplitPane>
+
+        </SplitPane>
+    </center>
+
+    <bottom>
+        <StackPane fx:id="contenedorBarraEstado" />
+    </bottom>
+
+</BorderPane>

@@ -14,7 +14,7 @@ Botón **Fork** en la esquina superior derecha de GitHub.
 ### 2. Clona tu fork
 
 ```bash
-git clone https://github.com/TU-USUARIO/PROYECTO.git
+git clone [https://github.com/TU-USUARIO/PROYECTO.git](https://github.com/TU-USUARIO/PROYECTO.git)
 
 cd PROYECTO
 ```
@@ -22,7 +22,7 @@ cd PROYECTO
 ### 3. Agrega el repo original como upstream
 
 ```bash
-git remote add upstream https://github.com/sis-inf/estante.git
+git remote add upstream [https://github.com/sis-inf/estante.git](https://github.com/sis-inf/estante.git)
 ```
 
 ### 4. Sincroniza antes de trabajar
@@ -36,11 +36,11 @@ git pull upstream dev
 ### 5. Crea tu rama de trabajo
 
 ```bash
-git checkout -b tipo/[`descripcion-corta`]
+git checkout -b fix/descripcion o feat/descripcion
 ```
-#### Convencion de nombres de ramas
+#### Convención de nombres de ramas
 
-tipo/[`descripcion corta`]
+Las ramas deben usar el formato `fix/descripcion` o `feat/descripcion` según corresponda:
 
 **Tipos de ramas:**
 
@@ -74,12 +74,12 @@ git commit -m "tipo: descripción corta en presente - Closes #N"
 ### 7. Sube tu rama a tu fork
 
 ```bash
-git push origin tipo/descripcion-corta
+git push origin fix/descripcion o feat/descripcion
 ```
 
 ### 8. Abre un Pull Request
 
-- Base: `sis-inf/estante` → rama `dev`
+- Base: `sis-inf/estante` → rama `dev` (Los PRs deben abrirse contra la rama dev, no contra main)
 - Compare: `TU-USUARIO/PROYECTO` → tu rama
 
 #### Recomendaciones para el PR
@@ -118,10 +118,20 @@ chore: configurar GitHub Actions para CI
 
 - ❌ Nunca hagas push directo a `main` o `dev`
 - ❌ Nunca trabajes directamente en `main` o `dev`
+- ❌ Nunca abras un Pull Request (PR) contra la rama `main` (Todos van contra `dev`)
 - ✅ Un issue = una rama = un PR
 - ✅ Todo PR debe referenciar su issue con `Closes #N`
 - ✅ El PR debe pasar el CI antes de ser mergeado
 - ✅ Todo PR necesita al menos una revisión
+
+### Convención de Paquetes Java
+Los directorios de paquetes deben seguir estrictamente las convenciones canónicas de Java para el proyecto. Todo el código fuente nuevo o modificado debe organizarse bajo el paquete raíz:
+`edu.sisinf.estante`
+
+Utilizando el subpaquete correcto según su propósito en el sistema:
+- `edu.sisinf.estante.core`
+- `edu.sisinf.estante.util`
+- `edu.sisinf.estante.config`
 
 ---
 
@@ -130,7 +140,7 @@ chore: configurar GitHub Actions para CI
 | Rama | Propósito |
 |---|---|
 | `main` | Versión estable — solo recibe merges desde `dev` |
-| `dev` | Rama de desarrollo principal |
+| `dev` | Rama de desarrollo principal (Destino de todos los PRs) |
 | `feat/*` | Nuevas funcionalidades |
 | `fix/*` | Correcciones |
 | `docs/*` | Documentación |

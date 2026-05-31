@@ -1,7 +1,6 @@
 package edu.sisinf.estante.controller;
 
-import edu.sisinf.estante.SqlValidator;
-import edu.sisinf.estante.TipoQuery;
+import edu.sisinf.estante.util.SqlValidator;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
@@ -25,7 +24,7 @@ public class DialogoConfirmacionDML {
     public static boolean confirmar(String sql) {
 
         // 1. Clasificar la query
-        TipoQuery tipo = SqlValidator.tipo(sql);
+        SqlValidator.TipoQuery tipo = SqlValidator.tipo(sql);
 
         // 2. Determinar si es destructiva
         boolean esDestructiva = SqlValidator.esDestructiva(sql);
@@ -53,8 +52,8 @@ public class DialogoConfirmacionDML {
         Label label = new Label("Vas a ejecutar la siguiente consulta:");
 
         TextArea textArea = new TextArea(sql);
-        textArea.setEditable(false);
-        textArea.setWrapText(true);
+        textArea.setEditable(false);    // Impide que el usuario modifique la consulta SQL en el cuadro de dialogo
+        textArea.setWrapText(true);    // Garantiza que las sentencias largas sean completamente visibles
         textArea.setPrefRowCount(6);
 
         VBox vbox = new VBox(8, label, textArea);
