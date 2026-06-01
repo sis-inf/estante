@@ -109,8 +109,9 @@ public class ConnectionProvider {
      * @throws IllegalArgumentException si la sentencia es un SELECT
      * @throws ErrorQuery               si ocurre un error durante la ejecución SQL
      */
-    public static int executeUpdate(Connection connection, String sql) throws IllegalArgumentException, ErrorQuery {
-        
+   public static int executeUpdate(Connection connection, String sql)
+        throws IllegalArgumentException, ErrorQuery {
+
     if (sql == null || sql.trim().toUpperCase().startsWith("SELECT")) {
         throw new IllegalArgumentException(
                 "executeUpdate() no permite sentencias SELECT. Use executeSelect() para consultas."
@@ -120,7 +121,9 @@ public class ConnectionProvider {
     try (Statement statement = connection.createStatement()) {
         return statement.executeUpdate(sql);
     } catch (SQLException e) {
-        throw new ErrorQuery("Error al ejecutar la sentencia de escritura: " + e.getMessage(), e);
+        throw new ErrorQuery(
+                "Error al ejecutar la sentencia de escritura: " + e.getMessage(),
+                e
+        );
     }
-  }
 }
