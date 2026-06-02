@@ -1,5 +1,7 @@
 package edu.sisinf.estante.controller;
 
+import edu.sisinf.estante.util.SqlValidator;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -77,9 +79,24 @@ public class PanelEditorSQLController {
      * Dispara el callback si el texto no está vacío.
      */
     private void disparar() {
-        String texto = areaSQL.getText();
-        if (onEjecutar != null && !texto.isBlank()) {
-            onEjecutar.accept(texto);
+
+    String texto = areaSQL.getText();
+
+    if (texto.isBlank() || onEjecutar == null) {
+        return;
+    }
+
+    if (SqlValidator.esDestructiva(texto)) {
+
+        boolean confirmar =
+                DialogoConfirmacionDML.confirmar(texto);
+
+        if (!confirmar) {
+            return;
         }
     }
+
+    onEjecutar.accept(texto);
+}
+
 }
