@@ -88,4 +88,36 @@ public class Conexion {
     public String toString() {
         return nombre + "@" + host + ":" + puerto + "/" + basedatos;
     }
+
+    /**
+     * Crea una copia de la conexión actual con un nuevo nombre.
+     * @param nuevoNombre El nombre que tendrá la nueva conexión clonada.
+     * @return Una nueva instancia de Conexion con los mismos datos pero nombre diferente.
+     * @throws IllegalArgumentException si el nuevoNombre es nulo o está vacío.
+     */
+    public Conexion copiar(String nuevoNombre) {
+        // Criterio de aceptación: nuevoNombre null o vacío lanza IllegalArgumentException
+        if (nuevoNombre == null || nuevoNombre.trim().isEmpty()) {
+            throw new IllegalArgumentException("El nuevo nombre de la conexión no puede ser nulo o vacío.");
+        }
+
+        // Creamos la nueva instancia
+        Conexion copia = new Conexion();
+        
+        // Mapeamos los campos usando los nombres exactos de tu clase
+        copia.setNombre(nuevoNombre);
+        copia.setHost(this.host);
+        copia.setPuerto(this.puerto);
+        copia.setBasedatos(this.basedatos);
+        copia.setUsuario(this.usuario);
+        copia.setPassword(this.password);
+        copia.setTipoMotor(this.tipoMotor);
+        copia.setUsarSSL(this.usarSSL);
+        
+        // Criterio de aceptación: No debe compartir estado mutable.
+        // Creamos una nueva lista conteniendo los elementos de la lista original
+        copia.setEtiquetas(new ArrayList<>(this.etiquetas));
+        
+        return copia;
+    }
 }
