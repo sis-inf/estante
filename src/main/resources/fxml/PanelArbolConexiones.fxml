@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.VBox?>
@@ -16,8 +17,10 @@
         <Button fx:id="btnEliminar"      text="−" />
     </ToolBar>
 
+    <TextField fx:id="txtBusqueda" 
+               promptText="Buscar tablas o esquemas..." />
+
     <TreeView fx:id="arbol"
               VBox.vgrow="ALWAYS" />
 
 </VBox>
- 
