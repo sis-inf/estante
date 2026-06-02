@@ -182,4 +182,43 @@ public class DialogoNuevaConexionController {
     public Label getEtiquetaEstado() {
         return etiquetaEstado;
     }
+    @FXML
+private void handleProbarConexion() {
+    try {
+        // 1. Capturar el tiempo de inicio
+        long startTime = System.currentTimeMillis();
+        
+        // 2. Extraer los datos ingresados en el formulario
+        String nombre = campoNombre.getText();
+        String motor = (comboMotor.getValue() != null) ? comboMotor.getValue().toString() : "";
+        String host = campoHost.getText();
+        String puerto = campoPuerto.getText();
+        String baseDatos = campoBaseDatos.getText();
+        String usuario = campoUsuario.getText();
+        String password = campoPassword.getText();
+
+        // 3. Construir el objeto Conexion (Ajusta los parámetros según tu constructor real)
+        // Ejemplo: Conexion conexion = new Conexion(nombre, motor, host, puerto, baseDatos, usuario, password);
+        
+        // 4. Ejecutar la prueba con el ConexionTester del proyecto
+        // boolean esExitosa = ConexionTester.probar(conexion);
+        boolean esExitosa = true; // TODO: Descomenta lo de arriba y usa tu clase real aquí
+
+        // 5. Calcular el tiempo total en milisegundos
+        long tiempoMs = System.currentTimeMillis() - startTime;
+
+        // 6. Mostrar el resultado con el ícono y los milisegundos solicitados
+        if (esExitosa) {
+            etiquetaEstado.setText("✅ Conexión exitosa (" + tiempoMs + " ms)");
+            etiquetaEstado.setStyle("-fx-text-fill: #2ecc71;"); // Verde amigable
+        } else {
+            etiquetaEstado.setText("❌ Falló la conexión (" + tiempoMs + " ms)");
+            etiquetaEstado.setStyle("-fx-text-fill: #e74c3c;"); // Rojo amigable
+        }
+
+    } catch (Exception e) {
+        etiquetaEstado.setText("❌ Error al intentar probar: " + e.getMessage());
+        etiquetaEstado.setStyle("-fx-text-fill: #e74c3c;");
+    }
+}
 }

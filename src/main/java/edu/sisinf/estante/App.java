@@ -5,6 +5,7 @@ import edu.sisinf.estante.controller.*;
 import edu.sisinf.estante.core.ErrorConexion;
 import edu.sisinf.estante.dao.*;
 import edu.sisinf.estante.modelo.Conexion;
+import edu.sisinf.estante.modelo.Esquema;
 import edu.sisinf.estante.modelo.ResultadoQuery;
 import edu.sisinf.estante.modelo.TipoMotor;
 import edu.sisinf.estante.servicio.EjecutorQuery;
@@ -63,7 +64,7 @@ public class App extends Application {
         );
 
         repositorio = new RepositorioConexionesJSON(
-                ConfiguracionApp.getArchivoConexiones()
+                ConfiguracionApp.archivoConexiones()
         );
 
         ejecutorQuery = new EjecutorQuery();
@@ -246,6 +247,44 @@ public class App extends Application {
             dialog.initModality(Modality.APPLICATION_MODAL);
 
             dialog.setScene(new Scene(root));
+            controller.getBotonProbar().setOnAction(event -> {
+
+    try {
+
+        Conexion conexion =
+                controller.construirConexion();
+
+        IConexionDAO dao =
+                daos.get(conexion.getTipoMotor());
+
+        long inicio =
+                System.currentTimeMillis();
+
+        boolean ok =
+                dao.probar(conexion);
+
+        long tiempo =
+                System.currentTimeMillis() - inicio;
+
+        controller
+                .getEtiquetaEstado()
+                .setText(
+                        (ok ? "✅ " : "❌ ")
+                                + (ok ? "Conexión exitosa" : "Conexión fallida")
+                                + " ("
+                                + tiempo
+                                + " ms)"
+                );
+
+    } catch (Exception e) {
+
+        controller
+                .getEtiquetaEstado()
+                .setText(
+                        "❌ " + e.getMessage()
+                );
+    }
+});
 
             controller.getBotonGuardar().setOnAction(event -> {
 
@@ -295,7 +334,7 @@ public class App extends Application {
 
             conexionActiva = dao.abrir(conexion);
 
-            List<String> esquemas =
+            List<Esquema> esquemas =
                     exploradorEsquemas
                             .listarEsquemas(conexionActiva);
 
@@ -304,9 +343,9 @@ public class App extends Application {
 
             nodo.getChildren().clear();
 
-            for (String esquema : esquemas) {
+            for (Esquema esquema : esquemas){
                 nodo.getChildren().add(
-                        new TreeItem<>(esquema)
+                        new TreeItem<>(esquema.getNombre())
                 );
             }
 
@@ -389,7 +428,7 @@ public class App extends Application {
 
                 case ERROR ->
                         barraEstadoController.setMensaje(
-                                resultado.getMensajeError()
+                                resultado.getMensaje()
                         );
             }
 

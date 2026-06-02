@@ -6,7 +6,7 @@ import java.util.List;
 import edu.sisinf.estante.modelo.Esquema;
 import edu.sisinf.estante.modelo.Tabla;
 import edu.sisinf.estante.modelo.Columna;
-import edu.sisinf.estante.modelo.excepcion.ErrorQuery;
+import edu.sisinf.estante.core.ErrorQuery;
 
 /**
  * Servicio stateless para explorar la estructura de la base de datos.
@@ -24,14 +24,14 @@ public class ExploradorEsquemas {
 
             // Criterio: Detección de SQLite
             if (url != null && url.startsWith("jdbc:sqlite:")) {
-                esquemas.add(new Esquema("main"));
+                esquemas.add(new Esquema("main",new ArrayList<>()));
             } else {
                 // Criterio: Otros motores (MySQL) usando TABLE_CAT
                 try (ResultSet rs = metaData.getCatalogs()) {
                     while (rs.next()) {
                         String nombreEsquema = rs.getString("TABLE_CAT");
                         if (nombreEsquema != null) {
-                            esquemas.add(new Esquema(nombreEsquema));
+                            esquemas.add(new Esquema(nombreEsquema,new ArrayList<>()));
                         }
                     }
                 }
@@ -53,7 +53,7 @@ public class ExploradorEsquemas {
             try (ResultSet rs = metaData.getTables(esquema, null, "%", new String[]{"TABLE"})) {
                 while (rs.next()) {
                     String nombreTabla = rs.getString("TABLE_NAME");
-                    tablas.add(new Tabla(nombreTabla, esquema));
+                    tablas.add(new Tabla(nombreTabla, esquema ,new ArrayList<>()));
                 }
             }
         } catch (SQLException e) {

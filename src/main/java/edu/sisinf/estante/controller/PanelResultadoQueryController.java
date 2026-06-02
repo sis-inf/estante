@@ -91,7 +91,7 @@ public class PanelResultadoQueryController {
 
             case ERROR:
                 labelEstado.setText(
-                        "Error: " + resultado.getMensajeError()
+                        "Error: " + resultado.getMensaje()
                 );
 
                 botonExportar.setDisable(true);
