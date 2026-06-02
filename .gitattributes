@@ -1,0 +1,20 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Java source files
+*.java text eol=lf
+
+# XML files (including FXML for JavaFX)
+*.xml text eol=lf
+*.fxml text eol=lf
+
+# Markdown documentation
+*.md text eol=lf
+
+# Properties files
+*.properties text eol=lf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
