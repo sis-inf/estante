@@ -21,7 +21,6 @@ public class Conexion {
 
     /**
      * Lista de etiquetas para organizar conexiones por categoría.
-     * Ejemplos: "produccion", "desarrollo", "local", "cliente-X".
      * Por defecto es una lista vacía para compatibilidad con versiones anteriores.
      */
     private List<String> etiquetas = new ArrayList<>();
@@ -32,15 +31,14 @@ public class Conexion {
 
     public Conexion(String nombre, String host, Integer puerto,
                     String basedatos, String usuario, String password) {
-        this.nombre   = nombre;
-        this.host     = host;
-        this.puerto   = puerto;
+        this.nombre    = nombre;
+        this.host      = host;
+        this.puerto    = puerto;
         this.basedatos = basedatos;
-        this.usuario  = usuario;
-        this.password = password;
+        this.usuario   = usuario;
+        this.password  = password;
     }
 
-    // Getters y Setters
     public String getId()                  { return id; }
     public void setId(String id)           { this.id = id; }
 
@@ -65,6 +63,10 @@ public class Conexion {
     public TipoMotor getTipoMotor()             { return tipoMotor; }
     public void setTipoMotor(TipoMotor motor)   { this.tipoMotor = motor; }
 
+    /**
+     * Indica si la conexión debe usar SSL/TLS.
+     * @return true si SSL está habilitado, false por defecto.
+     */
     public boolean isUsarSSL()             { return usarSSL; }
     public void setUsarSSL(boolean ssl)    { this.usarSSL = ssl; }
 
