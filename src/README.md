@@ -1,13 +1,21 @@
 # 📚 Estructura de la carpeta `src`
 
+# 📂 Estructura de la carpeta `src`
+
 ```bash
 src/
-├── ui/
-├── controller/
-├── model/
-├── service/
-├── db/
-└── util/
+└── main/
+    └── java/
+        └── edu/sisinf/estante/
+            ├── controller/
+            ├── dao/
+            ├── modelo/
+            ├── servicio/
+            ├── util/
+            ├── core/
+            ├── dto/
+            ├── config/
+            └── vista/
 ```
 
 Este directorio contiene la organización del código fuente siguiendo una arquitectura por capas, separando la interfaz gráfica, y el acceso a datos.
@@ -15,17 +23,6 @@ Este directorio contiene la organización del código fuente siguiendo una arqui
 ---
 
 ## 📂 Descripción de Directorios
-
-### 🔹 `ui/`
-
-Contiene la interfaz gráfica de usuario desarrollada con JavaFX.
-
-Ejemplos:
-
-* Vistas (`.fxml`)
-* Componentes visuales
-
----
 
 ### 🔹 `controller/`
 
@@ -35,13 +32,42 @@ Responsabilidades:
 
 * Manejo de eventos
 * Comunicación con la capa de servicios
+* VentanaPrincipalController
+* DialogoNuevaConexionController
+* PanelEditorSQLController
+* PanelResultadoQueryController
+* PanelHistorialController
+* BarraEstadoController
 
 ---
 
-### 🔹 `model/`
+### 🔹dao/
+
+Encapsula el acceso y persistencia de datos.
+
+Clases principales:
+
+* IConexionDAO
+* ConexionDAOMySQL
+* ConexionDAOSQLite
+* ConexionDAOPostgreSQL
+* RepositorioConexionesJSON
+
+---
+
+### 🔹 `modelo/`
 
 Define las entidades del dominio del sistema.
 
+Clases principales:
+
+* Conexion
+* TipoMotor
+* ResultadoQuery
+* FavoritoQuery
+* Tabla
+* Columna
+* Esquema
 Ejemplo:
 
 * Atributos y métodos de acceso
@@ -52,9 +78,19 @@ Ejemplo:
 
 ---
 
-### 🔹 `service/`
+### 🔹 `servicio/`
 
 Implementa la lógica de negocio de la aplicación.
+
+Clases principales:
+
+* EjecutorQuery
+* ExploradorEsquemas
+* ExportadorCSV
+* ExportadorJSON
+* GeneradorSQL
+* GeneradorCreateTable
+* GestorFavoritos
 
 Responsabilidades:
 
@@ -64,27 +100,62 @@ Responsabilidades:
 
 ---
 
-### 🔹 `db/`
-
-Encapsula el acceso a la base de datos.
-
-Responsabilidades:
-
-* Conexión (`JDBC`)
-* Consultas SQL
-* Operaciones CRUD
-
----
-
 ### 🔹 `util/`
 
 Contiene funciones auxiliares reutilizables.
 
-Responsabilidades:
+Clases principales:
 
+* SqlValidator
+* ValidadorSQL
+* LoggerConsole
+* StringUtils
+* Responsabilidades:
 * Validaciones
 * Formateo
 * Utilidades generales
+
+---
+
+### 🔹core/
+
+Incluye componentes base y manejo interno del sistema.
+
+Clases principales:
+
+* ConnectionProvider
+* HistorialConsultas
+* QueryTimer
+* ErrorConexion
+* ErrorQuery
+* ErrorPersistencia
+
+---
+
+### 🔹dto/
+
+Define objetos de transferencia de datos.
+
+Clases principales:
+
+* QueryResult
+
+---
+
+### 🔹 config/
+
+Gestiona configuración y parámetros de aplicación.
+
+Clases principales:
+
+* ConfiguracionApp
+* DBConfig
+
+---
+
+### 🔹 vista/
+
+Contiene recursos y componentes relacionados con la interfaz visual.
 
 ---
 
