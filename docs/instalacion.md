@@ -9,6 +9,10 @@ Para el despliegue del sistema, asegúrese de contar con:
 - **Sistema Operativo:** Windows 10/11, Linux o macOS.
 - **Motor de BD Interno:** SQLite (Gestionado mediante JDBC).
 
+> **⚠️ Nota sobre JavaFX:**
+> A partir de Java 11, **JavaFX ya no está incluido en el JDK**. Sin embargo, **no es necesario descargarlo ni instalarlo por separado**. El archivo `pom.xml` del proyecto gestiona automáticamente las dependencias de JavaFX mediante las librerías `org.openjfx`. Al ejecutar `mvn javafx:run`, Maven descarga y utiliza las versiones correctas de JavaFX de forma transparente.
+
 ## 2. Clonación del Repositorio
 Obtenga el código fuente del motor de base de datos mediante Git:
 ```bash
+
