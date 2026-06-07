@@ -6,7 +6,11 @@ import edu.sisinf.estante.core.ErrorConexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Implementación concreta de {@link IConexionDAO} para PostgreSQL.
@@ -70,6 +74,27 @@ public class ConexionDAOPostgreSQL implements IConexionDAO {
         return DriverManager.getConnection(url,
                 conexion.getUsuario(),
                 conexion.getPassword());
+    }
+
+    @Override
+    public List<String> getTablas(String nombreBaseDatos) throws SQLException {
+        List<String> tablas = new ArrayList<>();
+
+        String url = String.format("jdbc:postgresql://localhost:%s/%s",
+                PUERTO_DEFAULT,
+                nombreBaseDatos);
+
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(
+                     "SELECT tablename FROM pg_tables WHERE schemaname='public'")) {
+
+            while (rs.next()) {
+                tablas.add(rs.getString("tablename"));
+            }
+        }
+
+        return tablas;
     }
 
     /**

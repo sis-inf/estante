@@ -1,0 +1,38 @@
+// ============================================================
+// ARCHIVO: PanelInfoTabla.fxml
+// RUTA: src/main/resources/fxml/PanelInfoTabla.fxml
+// ============================================================
+
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="edu.sisinf.estante.controller.PanelInfoTablaController"
+      VBox.vgrow="ALWAYS">
+
+    <ToolBar>
+        <Label fx:id="labelNombreTabla" text="Sin tabla seleccionada" />
+        <Separator orientation="VERTICAL" />
+        <Button fx:id="btnGenerarSelect" text="SELECT" />
+        <Button fx:id="btnGenerarInsert" text="INSERT" />
+        <Button fx:id="btnGenerarUpdate" text="UPDATE" />
+        <Button fx:id="btnGenerarDelete" text="DELETE" />
+    </ToolBar>
+
+    <TableView fx:id="tablaColumnas" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colNombre"   text="Nombre"   />
+            <TableColumn fx:id="colTipo"     text="Tipo"     />
+            <TableColumn fx:id="colNullable" text="Nullable" />
+            <TableColumn fx:id="colPK"       text="PK"       />
+        </columns>
+    </TableView>
+
+</VBox>

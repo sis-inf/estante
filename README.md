@@ -1,6 +1,42 @@
 # Estante
+## Inicio Rápido
+
+```bash
+git clone https://github.com/sis-inf/estante.git
+mvn compile
+mvn javafx:run
+```
+
+Al ejecutar `mvn javafx:run` se abrirá la ventana principal de la aplicación Estante con su interfaz gráfica JavaFX.
 
 Gestor de base de datos con interfaz gráfica desarrollado en Java y JavaFX.
+
+## Características
+
+
+🗄️ **Motores soportados**
+
+* MySQL
+* SQLite
+* PostgreSQL
+
+📤 **Exportación**
+
+* CSV
+* JSON
+* Excel
+
+✍️ **Editor SQL**
+
+* Historial de consultas
+* Favoritos
+* Resaltado de sintaxis
+* Generador de SQL
+
+🛡️ **Seguridad y ejecución**
+
+* Validación de operaciones DML
+* Ejecución asíncrona de consultas
 
 ## ¿Qué es?
 
@@ -55,5 +91,4 @@ Ver [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Licencia
 MIT — ver [LICENSE](LICENSE)
-## ✨ Cambio final
-README actualizado correctamente.
+

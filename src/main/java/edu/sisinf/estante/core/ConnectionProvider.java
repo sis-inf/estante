@@ -3,6 +3,7 @@ package edu.sisinf.estante.core;
 import edu.sisinf.estante.config.DBConfig;
 import edu.sisinf.estante.dto.QueryResult;
 import edu.sisinf.estante.util.SqlValidator;
+import edu.sisinf.estante.core.ErrorQuery;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

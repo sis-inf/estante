@@ -5,6 +5,7 @@ import edu.sisinf.estante.modelo.TipoMotor;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Define las operaciones necesarias para abrir y validar
@@ -35,6 +36,15 @@ public interface IConexionDAO {
      * @throws SQLException si la conexión falla
      */
     Connection abrir(Conexion conexion) throws SQLException;
+
+    /**
+     * Lista las tablas de una base de datos.
+     *
+     * @param nombreBaseDatos nombre de la base de datos
+     * @return lista de nombres de tablas
+     * @throws SQLException si ocurre un error consultando las tablas
+     */
+    List<String> getTablas(String nombreBaseDatos) throws SQLException;
 
     /**
      * Verifica si una conexión es válida intentando abrirla y cerrarla.

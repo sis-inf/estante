@@ -6,7 +6,11 @@ import edu.sisinf.estante.core.ErrorConexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Implementación concreta de {@link IConexionDAO} para MySQL.
@@ -64,6 +68,27 @@ public class ConexionDAOMySQL implements IConexionDAO {
         return DriverManager.getConnection(url,
                 conexion.getUsuario(),
                 conexion.getContrasena());
+    }
+
+    @Override
+    public List<String> getTablas(String nombreBaseDatos) throws SQLException {
+        List<String> tablas = new ArrayList<>();
+
+        String url = String.format("jdbc:mysql://localhost:%s/%s?%s",
+                PUERTO_DEFAULT,
+                nombreBaseDatos,
+                PARAMS_SIN_SSL);
+
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SHOW TABLES IN " + nombreBaseDatos)) {
+
+            while (rs.next()) {
+                tablas.add(rs.getString(1));
+            }
+        }
+
+        return tablas;
     }
 
     @Override

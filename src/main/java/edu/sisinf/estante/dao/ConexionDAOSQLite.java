@@ -6,7 +6,11 @@ import edu.sisinf.estante.core.ErrorConexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Implementación concreta de {@link IConexionDAO} para SQLite.
@@ -60,6 +64,25 @@ public class ConexionDAOSQLite implements IConexionDAO {
 
         String url = construirUrl(conexion);
         return DriverManager.getConnection(url);
+    }
+
+    @Override
+    public List<String> getTablas(String nombreBaseDatos) throws SQLException {
+        List<String> tablas = new ArrayList<>();
+
+        String url = "jdbc:sqlite:" + nombreBaseDatos;
+
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(
+                     "SELECT name FROM sqlite_master WHERE type='table'")) {
+
+            while (rs.next()) {
+                tablas.add(rs.getString("name"));
+            }
+        }
+
+        return tablas;
     }
 
     /**
