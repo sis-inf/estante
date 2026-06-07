@@ -12,3 +12,129 @@ Para el despliegue del sistema, asegúrese de contar con:
 ## 2. Clonación del Repositorio
 Obtenga el código fuente del motor de base de datos mediante Git:
 ```bash
+## 3. Instalación en Linux (Ubuntu)
+
+### Instalar Java 17
+
+```bash
+sudo apt update
+sudo apt install openjdk-17-jdk
+```
+
+### Instalar Maven
+
+```bash
+sudo apt install maven
+```
+
+### Verificar instalación
+
+```bash
+java --version
+mvn --version
+```
+
+### Ejecutar el proyecto
+
+```bash
+mvn javafx:run
+```
+
+---
+
+## 4. Instalación en Windows
+
+### Instalar Java JDK 17
+
+Descargue e instale Java JDK 17 desde el sitio oficial de Oracle o Eclipse Temurin.
+
+### Configurar JAVA_HOME
+
+Ejemplo:
+
+```text
+JAVA_HOME=C:\Program Files\Java\jdk-17
+```
+
+Agregue también `%JAVA_HOME%\bin` a la variable `PATH`.
+
+### Instalar Maven
+
+Descargue Maven desde:
+
+https://maven.apache.org/download.cgi
+
+Configure la variable:
+
+```text
+MAVEN_HOME=C:\apache-maven
+```
+
+Agregue también `%MAVEN_HOME%\bin` al `PATH`.
+
+### Verificar instalación
+
+```cmd
+java --version
+mvn --version
+```
+
+### Ejecutar el proyecto
+
+```cmd
+mvn javafx:run
+```
+
+---
+
+## 5. Instalación en macOS
+
+### Instalar Java 17
+
+```bash
+brew install java@17
+```
+
+### Instalar Maven
+
+```bash
+brew install maven
+```
+
+### Verificar instalación
+
+```bash
+java --version
+mvn --version
+```
+
+### Ejecutar el proyecto
+
+```bash
+mvn javafx:run
+```
+
+---
+
+## 6. Verificación de Instalación
+
+Compruebe que Java y Maven estén correctamente configurados:
+
+```bash
+java --version
+mvn --version
+```
+
+Si ambos comandos muestran información de versión sin errores, la instalación se realizó correctamente.
+
+---
+
+## 7. Ejecución de la Aplicación
+
+Una vez configurado el entorno:
+
+```bash
+mvn javafx:run
+```
+
+
