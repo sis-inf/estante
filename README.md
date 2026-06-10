@@ -67,15 +67,18 @@ Estante ayuda a resolver:
 - Un servidor MySQL en ejecución (local o remoto)
 # Pasos
 
+
+```bash
 # 1. Clona el repositorio:
 git clone https://github.com/tu-usuario/estante.git
 cd estante
 
 # 2. Compila el proyecto:
-javac --module-path /ruta/a/javafx-sdk/lib --add-modules javafx.controls,javafx.fxml -d out src/**/*.java
+mvn compile
 
-# 3. Ejecuta la aplicación:    
-java --module-path /ruta/a/javafx-sdk/lib --add-modules javafx.controls,javafx.fxml -cp out Main  
+# 3. Ejecuta la aplicación:
+mvn javafx:run
+``` 
 
 ## Uso rápido
 - Abre Estante y completa los datos de conexión (host, puerto, usuario y contraseña)
