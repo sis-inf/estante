@@ -1,0 +1,25 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+        name: Trim Trailing Whitespace
+      - id: end-of-file-fixer
+        name: Fix End of Files
+      - id: check-xml
+        name: Check XML/FXML Syntax
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: no-commit-to-branch
+        name: Protect Main Branch
+        args: [--branch, main]
+
+  - repo: local
+    hooks:
+      - id: verificar-estructura
+        name: Verificación de Estructura de Proyecto
+        entry: bash scripts/verificar_estructura.sh
+        language: script
+        always_run: true

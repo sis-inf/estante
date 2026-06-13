@@ -158,4 +158,11 @@ Utilizando el subpaquete correcto según su propósito en el sistema:
 
 ---
 
+## Configuración de Calidad de Código (Pre-commit)
+
+Para mantener la consistencia del código y la estructura del proyecto, se utilizan hooks de `pre-commit`. Antes de realizar tu primer commit, es obligatorio instalar los hooks ejecutando el siguiente comando en la raíz del proyecto:
+
+```bash
+pre-commit install
+
 **¡Gracias por contribuir al proyecto!**
