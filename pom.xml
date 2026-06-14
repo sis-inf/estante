@@ -13,6 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <javafx.version>21.0.2</javafx.version>
         <junit.version>5.10.2</junit.version>
+        <checkstyle.version>10.21.4</checkstyle.version>
     </properties>
     <dependencies>
         <dependency>
@@ -127,6 +128,29 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-checkstyle-plugin</artifactId>
+              <version>3.6.0</version>                        <!-- wrapper Maven del plugin -->
+              <dependencies>
+                  <dependency>
+                      <groupId>com.puppycrawl.tools</groupId>
+                      <artifactId>checkstyle</artifactId>
+                      <version>${checkstyle.version}</version> <!-- motor real; se fija para reproducibilidad -->
+                  </dependency>
+              </dependencies>
+              <configuration>
+                  <configLocation>google_checks.xml</configLocation>
+                  <consoleOutput>true</consoleOutput>
+                  <failsOnError>false</failsOnError>
+                  <failOnViolation>false</failOnViolation>
+                  <violationSeverity>warning</violationSeverity>
+                  <outputFile>${project.build.directory}/checkstyle-result.xml</outputFile>
+                  <outputFileFormat>xml</outputFileFormat>
+                  <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                  <propertyExpansion>checkstyle.maxLineLength=120</propertyExpansion>
+              </configuration>
+          </plugin>
         </plugins>
     </build>
 </project>
