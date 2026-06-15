@@ -1,0 +1,10 @@
+# Regla global por defecto (Fallback para el administrador)
+*                                             @erwinsaul
+
+# Revisores por módulos específicos
+/src/main/java/com/estante/dao/               @erwinsaul
+/src/main/java/com/estante/servicio/          @erwinsaul
+/src/main/java/com/estante/controller/        @erwinsaul
+
+# Documentación
+/docs/                                        @erwinsaul
