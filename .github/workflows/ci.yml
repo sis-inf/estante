@@ -27,6 +27,11 @@ jobs:
       - name: Checkout del repositorio
         uses: actions/checkout@v4
 
+      - name: Verificar estructura Maven
+        run: |
+          chmod +x scripts/verificar_estructura.sh
+          ./scripts/verificar_estructura.sh
+
       - name: Configurar Java JDK 21
         uses: actions/setup-java@v4
         with:
