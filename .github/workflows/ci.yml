@@ -7,6 +7,11 @@ on:
 jobs:
   validar-pr:
     runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        java-version: [17, 21]
+
     steps:
       - name: Verificar descripción del PR
         run: |
@@ -27,10 +32,10 @@ jobs:
       - name: Checkout del repositorio
         uses: actions/checkout@v4
 
-      - name: Configurar Java JDK 21
+      - name: Configurar Java JDK ${{ matrix.java-version }}
         uses: actions/setup-java@v4
         with:
-          java-version: '21'
+          java-version: ${{ matrix.java-version }}
           distribution: 'temurin'
           cache: 'maven'
 
@@ -47,6 +52,6 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: checkstyle-report
+          name: checkstyle-report-java-${{ matrix.java-version }}
           path: target/checkstyle-result.xml
           if-no-files-found: ignore
