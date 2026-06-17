@@ -1,17 +1,13 @@
 name: CI
-
 on:
   pull_request:
     branches: [dev, main]
-
 jobs:
   validar-pr:
     runs-on: ubuntu-latest
-    
     strategy:
       matrix:
         java-version: [17, 21]
-
     steps:
       - name: Verificar descripción del PR
         run: |
@@ -20,7 +16,6 @@ jobs:
             exit 1
           fi
           echo "✅ PR tiene descripción"
-
       - name: Verificar que referencia un issue
         run: |
           if ! echo "${{ github.event.pull_request.body }}" | grep -qi "closes #\|fixes #\|refs #"; then
@@ -28,30 +23,33 @@ jobs:
             exit 1
           fi
           echo "✅ PR referencia un issue"
-
       - name: Checkout del repositorio
         uses: actions/checkout@v4
-
       - name: Configurar Java JDK ${{ matrix.java-version }}
         uses: actions/setup-java@v4
         with:
           java-version: ${{ matrix.java-version }}
           distribution: 'temurin'
           cache: 'maven'
-
       - name: Run JUnit Tests
         run: mvn test --no-transfer-progress
-
       - name: Verify build without integration tests
         run: mvn -B verify -DskipITs
-
+      - name: Generar reporte JaCoCo
+        run: mvn jacoco:report --no-transfer-progress
       - name: Checkstyle
         run: mvn checkstyle:check --no-transfer-progress
- 
       - name: Subir reporte Checkstyle
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: checkstyle-report-java-${{ matrix.java-version }}
           path: target/checkstyle-result.xml
+          if-no-files-found: ignore
+      - name: Subir reporte JaCoCo
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-report
+          path: target/site/jacoco/
           if-no-files-found: ignore
