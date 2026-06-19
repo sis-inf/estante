@@ -14,6 +14,11 @@
 | RF-008 | Validar errores en consultas SQL y mostrar mensajes claros                   | Alta      | Pendiente |
 | RF-009 | Permitir seleccionar diferentes bases de datos                               | Baja      | Pendiente |
 | RF-010 | Guardar historial de consultas realizadas                                    | Baja      | Pendiente |
+| RF-011 | Permitir guardar consultas SQL como favoritas                                | Media     | Pendiente |
+| RF-012 | Permitir exportar resultados a formato CSV                                   | Media     | Pendiente |
+| RF-013 | Mostrar información detallada de columnas y tablas                           | Media     | Pendiente |
+| RF-014 | Permitir importar datos desde archivos CSV                                   | Baja      | Pendiente |
+| RF-015 | Mostrar estadísticas básicas de la base de datos                             | Baja      | Pendiente |
 
 ---
 ## Requerimientos No Funcionales
@@ -29,6 +34,11 @@
 | RNF-007 | El historial de consultas debe ser de fácil acceso                                           | Usabilidad   | Pendiente |
 | RNF-008 | La interfaz debe mantener un diseño consistente en todas sus ventanas                        | Usabilidad   | Pendiente |
 | RNF-009 | El sistema debe permitir ejecutar consultas concurrentes sin superar 3 segundos por consulta | Rendimiento  | Pendiente |
+| RNF-010 | Las consultas deben ejecutarse de forma asíncrona manteniendo la interfaz responsiva durante el 100% de la ejecución | Rendimiento | Pendiente |
+| RNF-011 | El sistema debe soportar al menos 3 motores de base de datos diferentes                      | Compatibilidad | Pendiente |
+| RNF-012 | El historial de consultas debe permanecer disponible durante el 100% de la sesión activa     | Persistencia | Pendiente |
+| RNF-013 | El sistema debe permitir exportar hasta 10.000 filas sin errores de memoria                  | Capacidad    | Pendiente |
+| RNF-014 | El visor de resultados debe mostrar correctamente hasta 10.000 registros simultáneamente     | Capacidad    | Pendiente |
 
 ---
 ## Requerimientos de Sistema
