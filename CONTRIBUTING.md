@@ -164,5 +164,23 @@ Para mantener la consistencia del código y la estructura del proyecto, se utili
 
 ```bash
 pre-commit install
+# Cómo contribuir a este proyecto
 
+Gracias por tu interés en contribuir. Este proyecto usa
+el **Forking Workflow**. Lee este documento antes de empezar.
+
+---
+
+## Flujo de trabajo
+
+### 1. Haz fork del repositorio
+
+Botón **Fork** en la esquina superior derecha de GitHub.
+
+### 2. Clona tu fork
+
+```bash
+git clone [https://github.com/TU-USUARIO/PROYECTO.git](https://github.com/TU-USUARIO/PROYECTO.git)
+
+cd PROYECTO
 **¡Gracias por contribuir al proyecto!**
