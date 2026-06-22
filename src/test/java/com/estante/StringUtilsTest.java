@@ -1,4 +1,4 @@
-package edu.sisinf.estante.util;
+package com.estante.util;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
