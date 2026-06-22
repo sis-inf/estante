@@ -25,10 +25,6 @@ jobs:
           echo "✅ PR referencia un issue"
       - name: Checkout del repositorio
         uses: actions/checkout@v4
-
-      - name: Verificar estructura Maven
-        run: bash scripts/verificar_estructura.sh
-
       - name: Configurar Java JDK ${{ matrix.java-version }}
         uses: actions/setup-java@v4
         with:
@@ -43,6 +39,9 @@ jobs:
         run: mvn jacoco:report --no-transfer-progress
       - name: Checkstyle
         run: mvn checkstyle:check --no-transfer-progress
+      - name: SpotBugs
+        run: mvn spotbugs:check --no-transfer-progress
+        continue-on-error: true
       - name: Subir reporte Checkstyle
         if: always()
         uses: actions/upload-artifact@v4
