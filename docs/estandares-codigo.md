@@ -20,7 +20,34 @@ class PaymentProcessor {
 }
 ```
 
-## ⚙️ 2. Nombres de métodos y variables
+## 🔌 2. Nombres de interfaces
+
+- Las interfaces deben usar `PascalCase`.
+- En este proyecto se mantiene la convención de utilizar el prefijo `I` para identificar interfaces.
+- El prefijo `I` permite diferenciar claramente una interfaz de su implementación.
+- Las implementaciones pueden usar un nombre descriptivo relacionado con la funcionalidad.
+
+#### ✅ Ejemplos:
+
+```java
+public interface IConexionDAO {
+    void conectar();
+}
+
+public class ConexionDAOImpl implements IConexionDAO {
+    public void conectar() {
+        // implementación
+    }
+}
+
+public interface IRepositorioConexiones {
+    void guardar();
+}
+```
+
+* 👉 Esta convención ya está establecida en el proyecto y debe mantenerse para nuevas interfaces.
+
+## ⚙️ 3. Nombres de métodos y variables
 
 - Usar `camelCase`.
 - Los métodos deben representar acciones (verbos).
@@ -42,7 +69,7 @@ public boolean isValidInput(String input) {
 }
 ```
 
-## 📁 3. Nombres de archivos y paquetes
+## 📁 4. Nombres de archivos y paquetes
 - Archivos deben tener el mismo nombre que la clase (`UserService.java`).
 - Usar `lowercase` para paquetes.
 - Seguir estructura tipo dominio invertido.
