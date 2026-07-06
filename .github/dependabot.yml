@@ -1,21 +1,22 @@
 version: 2
 
 updates:
+  # Actualización automática de dependencias Maven
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    target-branch: "dev"
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "chore(deps)"
 
-* package-ecosystem: "maven"
-  directory: "/"
-  schedule:
-  interval: "monthly"
-  target-branch: "dev"
-  open-pull-requests-limit: 3
-  commit-message:
-  prefix: "chore(deps)"
-
-* package-ecosystem: "github-actions"
-  directory: "/"
-  schedule:
-  interval: "monthly"
-  target-branch: "dev"
-  open-pull-requests-limit: 3
-  commit-message:
-  prefix: "chore(deps)"
+  # Actualización automática de GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    target-branch: "dev"
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "chore(deps)"
