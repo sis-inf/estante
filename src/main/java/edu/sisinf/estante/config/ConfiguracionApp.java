@@ -6,6 +6,7 @@ package edu.sisinf.estante.config;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -30,6 +31,8 @@ public class ConfiguracionApp {
     /** Nombre del archivo que almacena las conexiones del usuario. */
     private static final String CONNECTIONS_FILE = "conexiones.json";
 
+    private static final String PORTABLE_FLAG = "portable.flag";
+
     /** Constructor privado para evitar instanciacion. */
     private ConfiguracionApp() {}
 
@@ -41,10 +44,13 @@ public class ConfiguracionApp {
      *
      * @return {@link Path} que apunta a {@code <user.home>/.estante/}
      */
-    public static Path directorioHome() {
-        return Paths.get(System.getProperty("user.home"), APP_DIRECTORY);
-    }
-
+   public static Path directorioHome() {
+       if (modoPortable()) {
+           return directorioEjecutable().resolve(APP_DIRECTORY);
+       }
+        
+       return Paths.get(System.getProperty("user.home"), APP_DIRECTORY);
+     }
     /**
      * Devuelve el archivo de conexiones de la aplicacion.
      *
@@ -69,6 +75,23 @@ public class ConfiguracionApp {
         try {
             Files.createDirectories(directorioHome());
         } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    private static boolean modoPortable() {
+        return Files.exists(directorioEjecutable().resolve(PORTABLE_FLAG));
+    }
+    
+    private static Path directorioEjecutable() {
+        try {
+            return Paths.get(
+                ConfiguracionApp.class
+                        .getProtectionDomain()
+                        .getCodeSource()
+                        .getLocation()
+                        .toURI())
+                .getParent();
+        } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
     }
