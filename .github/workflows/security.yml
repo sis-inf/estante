@@ -20,7 +20,10 @@ jobs:
       - name: Inicializar CodeQL
         uses: github/codeql-action/init@v4
         with:
-          languages: javascript-typescript
+          languages: java
+
+      - name: Compilar proyecto (CodeQL Autobuild)
+        uses: github/codeql-action/autobuild@v4
 
       - name: Análisis de CodeQL
         uses: github/codeql-action/analyze@v4
