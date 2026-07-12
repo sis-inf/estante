@@ -78,9 +78,12 @@ public class App extends Application {
         );
 
         Parent root = principalLoader.load();
+        registrarRoot(root);
 
         VentanaPrincipalController principalController =
                 principalLoader.getController();
+
+        configurarEscalaFuente(principalController);
 
         cargarPanelArbol(principalController);
 
@@ -236,6 +239,7 @@ public class App extends Application {
             );
 
             Parent root = loader.load();
+            registrarRoot(root);
 
             DialogoNuevaConexionController controller =
                     loader.getController();
@@ -494,6 +498,60 @@ public class App extends Application {
         alert.setContentText(mensaje);
 
         alert.showAndWait();
+    }
+
+    private static final List<java.lang.ref.WeakReference<Parent>> rootsActivos = new java.util.ArrayList<>();
+
+    public static void registrarRoot(Parent root) {
+        rootsActivos.add(new java.lang.ref.WeakReference<>(root));
+        aplicarEscalaFuente(root);
+    }
+
+    public static void aplicarEscalaFuente(Parent root) {
+        String escala = ConfiguracionApp.getEscalaFuente();
+        double porcentaje = 100.0;
+        if ("125%".equals(escala)) {
+            porcentaje = 125.0;
+        } else if ("150%".equals(escala)) {
+            porcentaje = 150.0;
+        }
+        double baseSize = 14.0;
+        double newSize = baseSize * (porcentaje / 100.0);
+        root.setStyle("-fx-font-size: " + newSize + "px;");
+    }
+
+    public static void propagarEscalaFuente() {
+        rootsActivos.removeIf(ref -> ref.get() == null);
+        for (java.lang.ref.WeakReference<Parent> ref : rootsActivos) {
+            Parent r = ref.get();
+            if (r != null) {
+                aplicarEscalaFuente(r);
+            }
+        }
+    }
+
+    private void configurarEscalaFuente(VentanaPrincipalController controller) {
+        String escalaActual = ConfiguracionApp.getEscalaFuente();
+        if ("125%".equals(escalaActual)) {
+            controller.getMenuFont125().setSelected(true);
+        } else if ("150%".equals(escalaActual)) {
+            controller.getMenuFont150().setSelected(true);
+        } else {
+            controller.getMenuFont100().setSelected(true);
+        }
+
+        controller.getMenuFont100().setOnAction(e -> {
+            ConfiguracionApp.setEscalaFuente("100%");
+            propagarEscalaFuente();
+        });
+        controller.getMenuFont125().setOnAction(e -> {
+            ConfiguracionApp.setEscalaFuente("125%");
+            propagarEscalaFuente();
+        });
+        controller.getMenuFont150().setOnAction(e -> {
+            ConfiguracionApp.setEscalaFuente("150%");
+            propagarEscalaFuente();
+        });
     }
 
     public static void main(String[] args) {

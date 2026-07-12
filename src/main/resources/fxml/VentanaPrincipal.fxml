@@ -3,6 +3,8 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
@@ -19,6 +21,22 @@
                     <items>
                         <MenuItem fx:id="menuNuevaConexion" text="Nueva conexión..." />
                         <MenuItem fx:id="menuSalir" text="Salir" />
+                    </items>
+                </Menu>
+
+                <Menu text="Ver">
+                    <items>
+                        <Menu text="Tamaño de fuente">
+                            <items>
+                                <RadioMenuItem fx:id="menuFont100" text="100%">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="grupoFuente" />
+                                    </toggleGroup>
+                                </RadioMenuItem>
+                                <RadioMenuItem fx:id="menuFont125" text="125%" toggleGroup="$grupoFuente" />
+                                <RadioMenuItem fx:id="menuFont150" text="150%" toggleGroup="$grupoFuente" />
+                            </items>
+                        </Menu>
                     </items>
                 </Menu>
 

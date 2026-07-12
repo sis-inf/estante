@@ -33,6 +33,12 @@ public class ConfiguracionApp {
 
     private static final String PORTABLE_FLAG = "portable.flag";
 
+    /** Nombre del archivo que almacena la configuracion de la aplicacion. */
+    private static final String CONFIG_FILE = "configuracion.properties";
+
+    private static final String PROP_FONT_SCALE = "escala_fuente";
+    private static final String DEFAULT_FONT_SCALE = "100%";
+
     /** Constructor privado para evitar instanciacion. */
     private ConfiguracionApp() {}
 
@@ -78,6 +84,59 @@ public class ConfiguracionApp {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Devuelve el archivo de configuracion de la aplicacion.
+     *
+     * @return {@link File} que apunta a {@code <directorioHome>/configuracion.properties}
+     */
+    public static File archivoConfiguracion() {
+        return directorioHome().resolve(CONFIG_FILE).toFile();
+    }
+
+    /**
+     * Devuelve la escala de fuente actual guardada en la configuracion.
+     *
+     * @return escala de fuente (ej. "100%", "125%", "150%")
+     */
+    public static String getEscalaFuente() {
+        File file = archivoConfiguracion();
+        if (!file.exists()) {
+            return DEFAULT_FONT_SCALE;
+        }
+        java.util.Properties props = new java.util.Properties();
+        try (java.io.FileReader reader = new java.io.FileReader(file)) {
+            props.load(reader);
+            return props.getProperty(PROP_FONT_SCALE, DEFAULT_FONT_SCALE);
+        } catch (IOException e) {
+            return DEFAULT_FONT_SCALE;
+        }
+    }
+
+    /**
+     * Guarda la escala de fuente en el archivo de configuracion.
+     *
+     * @param escala escala de fuente a guardar
+     */
+    public static void setEscalaFuente(String escala) {
+        asegurarDirectorioHome();
+        File file = archivoConfiguracion();
+        java.util.Properties props = new java.util.Properties();
+        if (file.exists()) {
+            try (java.io.FileReader reader = new java.io.FileReader(file)) {
+                props.load(reader);
+            } catch (IOException e) {
+                // ignorar
+            }
+        }
+        props.setProperty(PROP_FONT_SCALE, escala);
+        try (java.io.FileWriter writer = new java.io.FileWriter(file)) {
+            props.store(writer, "Configuracion de Estante");
+        } catch (IOException e) {
+            throw new RuntimeException("Error al guardar la configuracion", e);
+        }
+    }
+
     private static boolean modoPortable() {
         return Files.exists(directorioEjecutable().resolve(PORTABLE_FLAG));
     }

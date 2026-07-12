@@ -15,7 +15,7 @@
       spacing="12.0"
       style="-fx-padding: 15;">
  
-    <Label text="Nueva conexión" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+    <Label text="Nueva conexión" style="-fx-font-size: 1.15em; -fx-font-weight: bold;" />
  
     <GridPane hgap="10" vgap="8">
         <columnConstraints>

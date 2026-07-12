@@ -3,6 +3,8 @@ package edu.sisinf.estante.controller;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioMenuItem;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.StackPane;
 
 /**
@@ -18,6 +20,18 @@ public class VentanaPrincipalController {
 
     @FXML
     private MenuItem menuAcercaDe;
+
+    @FXML
+    private RadioMenuItem menuFont100;
+
+    @FXML
+    private RadioMenuItem menuFont125;
+
+    @FXML
+    private RadioMenuItem menuFont150;
+
+    @FXML
+    private ToggleGroup grupoFuente;
 
     @FXML
     private StackPane contenedorArbol;
@@ -46,6 +60,22 @@ public class VentanaPrincipalController {
 
     public MenuItem getMenuAcercaDe() {
         return menuAcercaDe;
+    }
+
+    public RadioMenuItem getMenuFont100() {
+        return menuFont100;
+    }
+
+    public RadioMenuItem getMenuFont125() {
+        return menuFont125;
+    }
+
+    public RadioMenuItem getMenuFont150() {
+        return menuFont150;
+    }
+
+    public ToggleGroup getGrupoFuente() {
+        return grupoFuente;
     }
 
     public StackPane getContenedorArbol() {
