@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ErrorEstanteTest {
 
-```
 @Test
 void errorConexionDebeExtenderErrorEstante() {
     ErrorConexion error = new ErrorConexion("Error de conexión");
@@ -45,6 +44,5 @@ void debePoderLanzarseSinTryCatch() {
         throw new ErrorEstante("Excepción sin try/catch");
     });
 }
-```
 
 }
