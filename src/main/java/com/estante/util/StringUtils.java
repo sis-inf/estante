@@ -19,11 +19,16 @@ public class StringUtils {
             return null;
         }
 
-        if (valor.length() <= 4) {
-            return "*****";
+        if (valor.isEmpty()) {
+            return "";
         }
 
-        return "*".repeat(valor.length() - 4) + valor.substring(valor.length() - 4);
+        if (valor.length() <= 4) {
+            return valor;
+        }
+
+        return "*".repeat(valor.length() - 4)
+                + valor.substring(valor.length() - 4);
     }
 
     public static String capitalizar(String texto) {
@@ -37,9 +42,9 @@ public class StringUtils {
         for (String palabra : palabras) {
             if (!palabra.isEmpty()) {
                 resultado.append(
-                    palabra.substring(0, 1).toUpperCase()
+                        palabra.substring(0, 1).toUpperCase()
                 ).append(
-                    palabra.substring(1).toLowerCase()
+                        palabra.substring(1).toLowerCase()
                 );
             }
             resultado.append(" ");
