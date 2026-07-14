@@ -50,12 +50,21 @@ public class HistorialQuerys {
                 exitosa
         ));
     }
+    /**
+     * Compatibilidad con versiones anteriores.
+     *
+     * @param query consulta SQL registrada
+     */
+    public void agregar(String query) {
+        agregar(query, "", System.currentTimeMillis());
+    }
 
     /**
      * Retorna todas las entradas del historial en orden cronológico.
      *
      * @return lista de entradas del historial
      */
+    
     public List<EntradaHistorial> obtenerTodos() {
         return new ArrayList<>(historial);
     }
