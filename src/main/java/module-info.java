@@ -16,6 +16,9 @@ module edu.sisinf.estante {
     // ── Dependencias de terceros ──────────────────────────────────────────────
     requires com.fasterxml.jackson.databind;
     requires org.slf4j;
+    requires org.apache.poi.ooxml;
+    requires org.apache.poi.poi;
+    requires org.fxmisc.richtext;
 
     // ── Apertura por reflexión (FXML + Jackson) ───────────────────────────────
 
