@@ -68,14 +68,14 @@ public class HistorialQuerys {
     public List<EntradaHistorial> obtenerTodos() {
         return new ArrayList<>(historial);
     }
-
     /**
-     * Retorna la última entrada del historial.
-     *
-     * @return última entrada, o null si el historial está vacío
-     */
-    public EntradaHistorial obtenerUltimo() {
-        return historial.peekLast();
+    * Retorna la última query agregada al historial.
+    *
+    * @return texto de la última query o null si está vacío
+    */
+    public String obtenerUltimo() {
+        EntradaHistorial ultima = historial.peekLast();
+        return ultima != null ? ultima.getQuery() : null;
     }
 
     /**
@@ -84,4 +84,4 @@ public class HistorialQuerys {
     public void limpiar() {
         historial.clear();
     }
-}
+    }
