@@ -11,6 +11,7 @@ jobs:
         java-version: [17, 21]
     steps:
       - name: Verificar descripción del PR
+        shell: bash
         run: |
           if [ -z "${{ github.event.pull_request.body }}" ]; then
             echo "El PR debe tener descripción"
@@ -18,6 +19,7 @@ jobs:
           fi
           echo "✅ PR tiene descripción"
       - name: Verificar que referencia un issue
+        shell: bash
         run: |
           if ! echo "${{ github.event.pull_request.body }}" | grep -qi "closes #\|fixes #\|refs #"; then
             echo "El PR debe referenciar un issue con 'Closes #N'"
