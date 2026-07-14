@@ -16,6 +16,7 @@ import edu.sisinf.estante.util.SqlValidator;
  * Servicio centralizado para la ejecución de consultas SQL.
  */
 public class EjecutorQuery {
+   private Connection conexion;
 
     /**
      * Ejecuta una consulta SQL en la conexión proporcionada sin alterar el ciclo de vida de la conexión.
@@ -24,6 +25,30 @@ public class EjecutorQuery {
      * @param sql      Cadena SQL a ejecutar.
      * @return ResultadoQuery con los datos obtenidos, conteo de filas afectadas o mensaje de error.
      */
+        /**
+     * Constructor vacío para compatibilidad.
+     */
+    public EjecutorQuery() {
+    }
+
+    /**
+     * Constructor compatible con versiones anteriores.
+     *
+     * @param conexion conexión activa a la base de datos
+     */
+    public EjecutorQuery(Connection conexion) {
+        this.conexion = conexion;
+    }
+
+    /**
+     * Ejecuta una consulta usando la conexión almacenada.
+     *
+     * @param sql consulta SQL
+     * @return resultado de la consulta
+     */
+    public ResultadoQuery ejecutar(String sql) {
+        return ejecutar(this.conexion, sql);
+    }
     public ResultadoQuery ejecutar(Connection conexion, String sql) {
         // 1. Medición de tiempo: Registrar el inicio
         long tiempoInicio = System.currentTimeMillis();
