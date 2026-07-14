@@ -71,6 +71,14 @@ public class DBConfig {
     public String getDriver() {
         return driver;
     }
+    /**
+    * Compatibilidad con versiones anteriores.
+    *
+    * @return URL JDBC configurada
+    */
+    public String toJdbcUrl() {
+        return url;
+    }
 
     public void setDriver(String driver) {
         this.driver = driver;
