@@ -4,9 +4,10 @@ on:
     branches: [dev, main]
 jobs:
   validar-pr:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
         java-version: [17, 21]
     steps:
       - name: Verificar descripción del PR
