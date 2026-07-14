@@ -75,7 +75,7 @@ public class HistorialQuerys {
     */
     public String obtenerUltimo() {
         EntradaHistorial ultima = historial.peekLast();
-        return ultima != null ? ultima.getQuery() : null;
+        return ultima != null ? ultima.query() : null;
     }
 
     /**
