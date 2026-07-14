@@ -25,6 +25,21 @@ public class DBConfig {
         this.password = password;
         this.driver = driver;
     }
+    /**
+    * Constructor de compatibilidad con versiones anteriores.
+    *
+    * @param host dirección del servidor
+    * @param puerto puerto de conexión
+    * @param usuario usuario de la base de datos
+    * @param password contraseña
+    * @param driver clase del driver JDBC
+    */
+    public DBConfig(String host, int puerto, String usuario, String password, String driver) {
+        this.url = host + ":" + puerto;
+        this.usuario = usuario;
+        this.password = password;
+        this.driver = driver;
+    }
 
     /** Constructor vacío para uso con setters. */
     public DBConfig() {}
