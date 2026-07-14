@@ -41,7 +41,7 @@ public class ValidadorSQL {
     public static boolean isSelect(String sql) {
         return esSentenciaValida(sql) && PATTERN_SELECT.matcher(sql).matches();
     }
-
+    
     /**
      * Indica si la sentencia SQL es un INSERT.
      *
@@ -83,7 +83,25 @@ public class ValidadorSQL {
     public static boolean isDML(String sql) {
         return isInsert(sql) || isUpdate(sql) || isDelete(sql);
     }
+    /**
+    * Compatibilidad con versiones anteriores.
+    *
+    * @param sql sentencia SQL a evaluar
+    * @return true si la sentencia comienza con SELECT
+    */
+    public static boolean esSelect(String sql) {
+        return isSelect(sql);
+    }
 
+    /**
+    * Compatibilidad con versiones anteriores.
+    *
+    * @param sql sentencia SQL a evaluar
+    * @return true si la sentencia es INSERT, UPDATE o DELETE
+    */
+    public static boolean esDML(String sql) {
+        return isDML(sql);
+    }
     /**
      * Indica si la sentencia SQL es válida (no nula y no vacía).
      *
