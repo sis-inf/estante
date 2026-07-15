@@ -170,3 +170,6 @@ Estante facilita la administración de conexiones a bases de datos mediante el a
 Mientras no exista un mecanismo de cifrado integrado, es responsabilidad del usuario aplicar buenas prácticas de seguridad, restringir permisos de acceso, proteger respaldos y utilizar conexiones seguras cuando el motor de base de datos lo permita.
 
 La aplicación ya ofrece soporte para configuraciones SSL y cuenta con una estructura que podría evolucionar hacia mecanismos más robustos de protección de credenciales en futuras versiones.
+
+### Configuración Local de Base de Datos
+Para el desarrollo local, se debe copiar el archivo de plantilla `src/main/resources/database.properties.example`, renombrarlo a `src/main/resources/database.properties` y configurar las credenciales correspondientes. Este archivo real (`.properties`) está excluido del control de versiones por seguridad.
