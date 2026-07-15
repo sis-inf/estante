@@ -34,4 +34,8 @@ module edu.sisinf.estante {
     exports edu.sisinf.estante.modelo;
     exports edu.sisinf.estante.servicio;
     exports edu.sisinf.estante.dao;
+    exports edu.sisinf.estante.util;
+    exports edu.sisinf.estante.core;
+    exports edu.sisinf.estante.config;
+    exports edu.sisinf.estante.dto;
 }
