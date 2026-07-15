@@ -58,13 +58,15 @@ public class PanelInfoTablaController {
      * @param tabla     nombre de la tabla
      * @param conexion  conexión JDBC activa
      */
-    public void mostrarTabla(String tabla, Connection conexion) {
-        labelNombreTabla.setText("Tabla: " + tabla);
-        tablaColumnas.getItems().clear();
+    // Agregamos el parámetro String esquema
+public void mostrarTabla(String tabla, String esquema, Connection conexion) {
+    labelNombreTabla.setText("Tabla: " + tabla);
+    tablaColumnas.getItems().clear();
 
-        List<ColumnaInfo> columnas = explorador.getColumnas(conexion, tabla);
-        tablaColumnas.getItems().setAll(columnas);
-    }
+    // Pasamos el esquema al nuevo método consolidado
+    List<ColumnaInfo> columnas = explorador.getColumnas(conexion, esquema, tabla);
+    tablaColumnas.getItems().setAll(columnas);
+}
 
     /**
      * Limpia el panel cuando no hay tabla seleccionada.
