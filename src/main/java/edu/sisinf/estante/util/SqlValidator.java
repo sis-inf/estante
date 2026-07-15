@@ -44,9 +44,19 @@ public class SqlValidator {
                 || tipo == TipoQuery.DELETE;
     }
 
-    public static boolean isDML(String query) {
-    return esDML(query); 
-    }
+  /**
+   * Determina si la consulta corresponde a una operación DML.
+   *
+   * <p>Este método se mantiene como un alias de {@link #esDML(String)}
+   * para preservar la compatibilidad con el código existente.</p>
+   *
+   * @param query consulta SQL a evaluar
+   * @return {@code true} si la consulta corresponde a una operación DML;
+   *         {@code false} en caso contrario
+   */
+  public static boolean isDML(String query) {
+      return esDML(query);
+  }
 
     public static boolean esDDL(String query) {
         TipoQuery tipo = tipo(query);
