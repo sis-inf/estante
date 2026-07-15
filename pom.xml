@@ -191,7 +191,7 @@
                     <configLocation>google_checks.xml</configLocation>
                     <consoleOutput>true</consoleOutput>
                     <failsOnError>false</failsOnError>
-                    <failOnViolation>false</failOnViolation>
+                    <failOnViolation>true</failOnViolation>
                     <violationSeverity>warning</violationSeverity>
                     <outputFile>${project.build.directory}/checkstyle-result.xml</outputFile>
                     <outputFileFormat>xml</outputFileFormat>
