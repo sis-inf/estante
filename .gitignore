@@ -91,3 +91,5 @@ id_rsa.pub
 # Otros
 .eslintcache
 .gitignore.local
+# Configuración de base de datos local
+src/main/resources/database.properties
