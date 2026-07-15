@@ -3,78 +3,27 @@
 Thumbs.db
 desktop.ini
 
-# Variables de entorno
-.env
-.env.local
-.env.*.local
-*.local
-
-# Logs
-*.log
-logs/
-npm-debug.log*
-
-# Dependencias
-node_modules/
-vendor/
-__pycache__/
-*.pyc
-*.pyo
-
-# Build / compilación
-dist/
-build/
-out/
+# Build / compilación (Java/Maven)
 target/
-*.o
-*.exe
-*.dll
-*.so
+*.class
 
 # IDEs / Editores
-.vscode/
 .idea/
+.vscode/
 *.iml
 *.swp
 *.swo
-
-# Cobertura de tests
-coverage/
-.coverage
-htmlcov/
-
-# Datos sensibles
-*.pem
-*.key
-*.cert
-
-# Archivos SQLite
-*.SQLite
-*.sqlite
-*.sqlite3
-*.db
-
-# dumps y backups
-*.sql.bak
-*.dump
-*.dumps
 
 # Java
 .classpath
 .project
 .settings/
-*.class
 
-# Python
-venv/
-.venv/
-.pytest_cache
-
-# Cobertura de tests
-coverage/
-.coverage
-htmlcov/
-.nyc_output/
+# Archivos SQLite
+*.db
+*.sqlite
+*.sqlite3
+*.SQLite
 
 # Datos sensibles
 *.pem
@@ -82,6 +31,12 @@ htmlcov/
 *.cert
 id_rsa
 id_rsa.pub
+database.properties
+
+# Dumps y backups
+*.sql.bak
+*.dump
+*.dumps
 
 # Temporales
 *.tmp
