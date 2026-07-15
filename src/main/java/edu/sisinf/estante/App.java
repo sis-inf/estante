@@ -61,6 +61,10 @@ public class App extends Application {
         daos.put(
                 TipoMotor.MYSQL,
                 new ConexionDAOMySQL()
+            daos.put(
+        TipoMotor.POSTGRESQL,
+        new ConexionDAOPostgreSQL()
+    );
         );
 
         repositorio = new RepositorioConexionesJSON(
