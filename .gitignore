@@ -44,4 +44,7 @@ database.properties
 *.bak
 
 # Otros
+.eslintcache
 .gitignore.local
+# Configuración de base de datos local
+src/main/resources/database.properties
