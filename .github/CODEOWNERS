@@ -2,9 +2,9 @@
 *                                             @erwinsaul
 
 # Revisores por módulos específicos
-/src/main/java/com/estante/dao/               @erwinsaul
-/src/main/java/com/estante/servicio/          @erwinsaul
-/src/main/java/com/estante/controller/        @erwinsaul
+/src/main/java/edu/sisinf/estante/dao/               @erwinsaul
+/src/main/java/edu/sisinf/estante/servicio/          @erwinsaul
+/src/main/java/edu/sisinf/estante/controller/        @erwinsaul
 
 # Documentación
 /docs/                                        @erwinsaul

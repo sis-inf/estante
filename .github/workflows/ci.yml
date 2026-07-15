@@ -32,7 +32,23 @@ jobs:
 
       - name: Checkout del repositorio
         uses: actions/checkout@v4
+        
+      - name: Verificar actualización de CHANGELOG.md
+        if: "!contains(github.event.pull_request.labels.*.name, 'skip-changelog')"
+        run: |
+          git fetch origin ${{ github.base_ref }}
 
+          archivos=$(git diff --name-only origin/${{ github.base_ref }}...HEAD)
+
+          if echo "$archivos" | grep -q "^src/main/java/"; then
+            if ! echo "$archivos" | grep -q "^CHANGELOG.md$"; then
+              echo "El PR modifica src/main/java pero no actualiza CHANGELOG.md"
+              echo "Agrega el cambio al CHANGELOG.md o usa la etiqueta skip-changelog si corresponde"
+              exit 1
+            fi
+          fi
+
+          echo "✅ Verificación de CHANGELOG.md correcta"
       - name: Verificar estructura Maven
         run: bash scripts/verificar_estructura.sh
 
