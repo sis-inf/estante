@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import edu.sisinf.estante.modelo.Esquema;
 import edu.sisinf.estante.modelo.Tabla;
-import edu.sisinf.estante.modelo.Columna;
 import edu.sisinf.estante.modelo.ColumnaInfo;
 import edu.sisinf.estante.core.ErrorQuery;
 
@@ -64,14 +63,15 @@ public class ExploradorEsquemas {
     }
 
     /**
-     * Lista las columnas de la tabla indicada, marcando la Primary Key.
+     * Obtiene las columnas de una tabla específica, incluyendo si es Primary Key.
      */
-    public List<Columna> listarColumnas(Connection conexion, String esquema, String tabla) {
-        List<Columna> columnas = new ArrayList<>();
+    public List<ColumnaInfo> getColumnas(Connection conexion, String esquema, String tabla) {
+        List<ColumnaInfo> columnas = new ArrayList<>();
+
         try {
             DatabaseMetaData metaData = conexion.getMetaData();
             
-            // Criterio: Obtener Primary Keys para comparar
+            // 1. Obtener Primary Keys para comparar
             List<String> pks = new ArrayList<>();
             try (ResultSet rsPk = metaData.getPrimaryKeys(esquema, null, tabla)) {
                 while (rsPk.next()) {
@@ -79,45 +79,22 @@ public class ExploradorEsquemas {
                 }
             }
 
-            // Criterio: Obtener columnas y sus metadatos
+            // 2. Obtener metadatos y combinar con PKs
             try (ResultSet rs = metaData.getColumns(esquema, null, tabla, "%")) {
-                while (rs.next()) {
-                    String nombreCol = rs.getString("COLUMN_NAME");
-                    String tipoSql = rs.getString("TYPE_NAME");
-                    boolean esNullable = "YES".equals(rs.getString("IS_NULLABLE"));
-                    boolean esPrimaryKey = pks.contains(nombreCol);
-                    
-                    columnas.add(new Columna(nombreCol, tipoSql, esNullable, esPrimaryKey));
-                }
-            }
-        } catch (SQLException e) {
-            throw new ErrorQuery("No se pudieron listar las columnas de la tabla " + tabla, e);
-        }
-        return columnas;
-    }
-    /**
-     * Obtiene las columnas de una tabla específica con nombre, tipo, nullable, tamaño y valor por defecto.
-     */
-    public List<ColumnaInfo> getColumnas(Connection conexion, String tabla) {
-        List<ColumnaInfo> columnas = new ArrayList<>();
-
-        try {
-            DatabaseMetaData meta = conexion.getMetaData();
-
-            try (ResultSet rs = meta.getColumns(null, null, tabla, "%")) {
                 while (rs.next()) {
                     String nombre = rs.getString("COLUMN_NAME");
                     String tipoSQL = rs.getString("TYPE_NAME");
                     boolean nullable = "YES".equals(rs.getString("IS_NULLABLE"));
-
+                    
                     Integer tamano = rs.getInt("COLUMN_SIZE");
                     if (rs.wasNull()) {
                         tamano = null;
                     }
 
                     String valorDefault = rs.getString("COLUMN_DEF");
+                    boolean esPrimaryKey = pks.contains(nombre);
 
-                    columnas.add(new ColumnaInfo(nombre, tipoSQL, nullable, tamano, valorDefault));
+                    columnas.add(new ColumnaInfo(nombre, tipoSQL, nullable, tamano, valorDefault, esPrimaryKey));
                 }
             }
         } catch (SQLException e) {
