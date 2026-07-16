@@ -31,7 +31,7 @@ jobs:
           echo "✅ PR referencia un issue"
 
       - name: Checkout del repositorio
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         
       - name: Verificar actualización de CHANGELOG.md
         if: "!contains(github.event.pull_request.labels.*.name, 'skip-changelog')"
