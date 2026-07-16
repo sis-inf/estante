@@ -73,7 +73,7 @@ jobs:
 
       - name: Subir reporte Checkstyle
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: checkstyle-report-java-${{ matrix.java-version }}-${{ matrix.os }}
           path: target/checkstyle-result.xml
@@ -81,7 +81,7 @@ jobs:
 
       - name: Subir reporte JaCoCo
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: jacoco-report-${{ matrix.java-version }}-${{ matrix.os }}
           path: target/site/jacoco/
